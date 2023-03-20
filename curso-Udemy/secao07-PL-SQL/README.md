@@ -1,0 +1,29 @@
+# Seção 07: PL/SQL:
+
+## Aula 01 - INTRODUÇÃO:
+
+## Aula 02 - CONJUNTO DE CARACTERS:
+
+## Aula 03 - VARIAVEIS:
+
+## Aula 04 - ATRIBUTOS TYPE E ROWTYPE:
+
+## Aula 05 - TIPO DE REGISTRO:
+
+## Aula 06 - ESCOPO DE VARIAVEIS:
+
+## Aula 07 - IDENTIFICADORES:
+
+## Aula 08 - BLOCOS ANÔNIMOS:
+
+## Aula 09 - ESTRUTURA IF-THEN / IF-THEN-ELSE / IF-THEN-ELSIF:
+
+## Aula 10 - ESTRUTURA CASE WHEN:
+
+## Aula 11 - GOTO:
+
+## Aula 12 - LOOP FOR:
+
+## Aula 13 - LOOP WHILE:
+
+## Aula 14 - LOOP CONTINUE:

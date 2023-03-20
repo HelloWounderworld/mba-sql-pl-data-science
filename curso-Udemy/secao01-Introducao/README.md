@@ -1,0 +1,35 @@
+# Seção 01: Introdução:
+
+## Aula 01 - Apresentação do Instrutor:
+
+## Aula 02 - Introdução:
+
+## Aula 03 - INSTALANDO ORACLE XE:
+
+## Aula 04 - CONFIGURANDO SQL DEVELOPER:
+
+## Aula 05 - CRIANDO TABLESPACE:
+
+## Aula 06 - HISTORICO LINGUAGEM SQL:
+
+## Aula 07 - DEFINIÇÃO PL/SQL:
+
+## Aula 08 - CONCEITOS DB PARTE 1:
+
+## Aula 09 - CONCEITOS DB PARTE 2:
+
+## Aula 10 - DIAGRAMA DE DADOS:
+
+## Aula 11 - CARACTERISTICAS DE BANCO DE DADOS RELACIONAL:
+
+## Aula 12 - MER MODELO ENTIDADE RELACIONAMENTO:
+
+## Aula 13 - CARDINALIDADE:
+
+## Aula 14 - SGBD:
+
+## Aula 15 - TIPO DE DADOS:
+
+## Aula 16 - ACID E CRUD:
+
+## Aula 17 - CONSTRAINTS:

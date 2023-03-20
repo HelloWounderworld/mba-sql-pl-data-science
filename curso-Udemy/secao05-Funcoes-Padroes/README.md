@@ -1,0 +1,29 @@
+# Seção 05: Funções Padrões:
+
+## Aula 01 - INTRODUÇÃO:
+
+## Aula 02 - AGREGAÇÃO PARTE 1:
+
+## Aula 03 - AGREGAÇÃO PARTE 2:
+
+## Aula 04 - FUNÇÃO CARACTERES PARTE 1:
+
+## Aula 05 - FUNÇÃO CARACTERES PARTE 2:
+
+## Aula 06 - FUNÇÃO DE CLASSIFICAÇÃO:
+
+## Aula 07 - FUNÇOES DE CONTROLE DE FLUXO:
+
+## Aula 08 - FUNÇÕES MATEMATICAS:
+
+## Aula 09 - FUNÇÕES DE CRIPTOGRAFIA:
+
+## Aula 10 - FUNÇÃO LIMITE:
+
+## Aula 11 - FUNÇÕES DE CONVERSÃO:
+
+## Aula 12 - FUNÇÕES DE DATA PARTE 1:
+
+## Aula 13 - FUNÇÕES DE DATA PARTE 2:
+
+## Aula 14 - FUNÇÕES DE INFORMAÇÃO DO SISTEMA.:
