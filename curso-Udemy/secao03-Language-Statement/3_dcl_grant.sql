@@ -21,6 +21,10 @@ GRANT CREATE PROCEDURE,CREATE VIEW TO ALUNO;
 select 'GRANT ALL ON ' || object_name || ' TO ALUNO;' AS RETORNO
    FROM user_objects;
    
+--select 'GRANT UPDATE  ' || object_name || ' TO ALUNO;' AS RETORNO
+   --FROM user_objects
+   --WHERE OBJECT_TYPE='TABLE';
+   
 select 'GRANT UPDATE ON  ' || object_name || ' TO ALUNO;' AS RETORNO
    FROM user_objects
    WHERE OBJECT_TYPE='TABLE';
