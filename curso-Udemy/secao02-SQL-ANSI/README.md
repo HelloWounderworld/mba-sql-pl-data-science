@@ -28,5 +28,8 @@ Basta rodar o arquivo 02_oper_matematicos.sql e ir selecionando e dando Ctrl + E
 ## Aula 03 e 04 - OPERADORES LOGICOS PARTE 1 e 2:
 Seguir o link de leitura
 
+    https://www.javatpoint.com/sql-logical-operators
     https://www.luis.blog.br/operadores-aritmeticos-logicos-e-comparacao.html
     https://www.devmedia.com.br/sql-clausula-where/37645#:~:text=Usamos%20WHERE%20para%20filtrar%20dados,seguida%20por%20uma%20express%C3%A3o%20l%C3%B3gica.
+
+Bom, para testar teremos que usar o arquivo 03_oper_filtros.sql. Vamos abrir ela no Oracle.
