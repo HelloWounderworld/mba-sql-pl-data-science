@@ -2,13 +2,11 @@
 
 ## Aula 01 - INTRODUÇÃO:
 
-## Aula 02 - AGREGAÇÃO PARTE 1:
+## Aula 02 e 03 - AGREGAÇÃO PARTE 1 e 2:
 
-## Aula 03 - AGREGAÇÃO PARTE 2:
 
-## Aula 04 - FUNÇÃO CARACTERES PARTE 1:
+## Aula 04 e 05 - FUNÇÃO CARACTERES PARTE 1 e 2:
 
-## Aula 05 - FUNÇÃO CARACTERES PARTE 2:
 
 ## Aula 06 - FUNÇÃO DE CLASSIFICAÇÃO:
 
@@ -22,8 +20,7 @@
 
 ## Aula 11 - FUNÇÕES DE CONVERSÃO:
 
-## Aula 12 - FUNÇÕES DE DATA PARTE 1:
+## Aula 12 e 13 - FUNÇÕES DE DATA PARTE 1 e 2:
 
-## Aula 13 - FUNÇÕES DE DATA PARTE 2:
 
 ## Aula 14 - FUNÇÕES DE INFORMAÇÃO DO SISTEMA.:
