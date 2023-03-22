@@ -21,3 +21,6 @@ O arquivo para entender o conceito acima na prática seria o join.sql.
 Seguir o link de leitura
 
     https://www.devmedia.com.br/trabalhando-com-subqueries/40134
+    https://www.w3resource.com/sql/subqueries/understanding-sql-subqueries.php
+
+O arquivo para entender o conceito acima na prática seria o subselect.sql.
