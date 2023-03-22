@@ -1,6 +1,12 @@
 # Seção 11: PROCEDURES:
 
 ## Aula 01 - INTRODUÇÃO:
+Seguir o link para leitura
+
+    https://www.oracletutorial.com/plsql-tutorial/plsql-procedure/
+    https://www.tutorialspoint.com/plsql/plsql_procedures.htm
+    https://www.javatpoint.com/pl-sql-procedure
+    https://www.techonthenet.com/oracle/procedures.php
 
 ## Aula 02 - PROCEDURES PARTE 1:
 

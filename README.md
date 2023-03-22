@@ -7,6 +7,8 @@ Usarei a seguinte referência:
 
 - Curso Oracle Developer SQL e PL/SQL.
 
+- Oracle PL/SQL Programming, Sixth Edition - Steven Feuerstein with Bill Pribyl
+
 Basicamente, a ideia do banco de dados relacional está no estudo de lógica proposicional (alguns preferem em dizer álgebra relacional) que nada mais é que estudo básico sobre teoria de conjuntos.
 
 ## Objetivo:
