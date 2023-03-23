@@ -290,12 +290,28 @@ Seguir o pdf de referência
 ## Aula 16 - ACID E CRUD:
 - ACID - Seguir o link de leitura
 
-    https://www.javatpoint.com/crud-operations-in-sql
     https://es.wikipedia.org/wiki/ACID
     https://blog.betrybe.com/tecnologia/acid-porque-usar/
 
+Em bancos de dados, ACID é o nome dado às características dos parâmetros que permitem classificar as transações dos sistemas gerenciadores de banco de dados . Quando se diz que uma ação é compatível com ACID, isso indica - em vários graus - que permite a realização de transações.
+
+Especificamente, ACID é um acrônimo em inglês para A tomicity, C onsistency, Isolation and D urability
+
+### Definições 
+
+- Atomicidade : Se quando uma operação consiste em uma série de etapas, das quais todas ou nenhuma são executadas, ou seja, as transações são concluídas.
+
+- Consistência : ( Integridade ). É a propriedade que garante que apenas o que pode ser concluído seja iniciado. Portanto, são executadas aquelas operações que não vão quebrar as regras e diretrizes de Integridade do banco de dados. A propriedade de consistência sustenta que qualquer transação levará o banco de dados de um estado válido para um estado válido. "A Integridade do Banco de Dados nos permite garantir que os dados sejam exatos e consistentes, ou seja, que estejam sempre intactos, sempre conforme o esperado e que em nada mudem ou sejam distorcidos. Dessa forma, podemos garantir que as informações que são apresentadas ao usuário serão sempre as mesmas."
+
+- Isolamento : Esta propriedade garante que uma operação não afete outra. Isso garante que a execução de duas transações sobre a mesma informação sejam independentes e não gerem nenhum tipo de erro. Essa propriedade define como e quando as alterações produzidas por uma operação se tornam visíveis para as outras operações simultâneas. O isolamento pode ser alcançado em diferentes níveis, sendo o parâmetro essencial ao selecionar o DBMS .
+
+- Durabilidade : ( Persistência ). Essa propriedade garante que, uma vez concluída a operação, ela persistirá e não poderá ser desfeita, mesmo que o sistema falhe e, portanto, os dados de alguma forma sobrevivam.
+
+Ao atender a esses 4 requisitos, um sistema de gerenciamento de banco de dados pode ser considerado compatível com ACID .
+
 - CRUD - Seguir o link de leitura
 
+    https://www.javatpoint.com/crud-operations-in-sql
     https://developer.mozilla.org/pt-BR/docs/Glossary/CRUD
     https://coodesh.com/blog/dicionario/o-que-e-crud/#:~:text=CRUD%20%C3%A9%20usado%20na%20linguagem%20SQL&text=Trata%2Dse%20de%20um%20grupo,de%20um%20banco%20de%20dados.
 
