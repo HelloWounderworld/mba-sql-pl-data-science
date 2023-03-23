@@ -166,6 +166,7 @@ Todas as SELECT as intruções precisam de trÊs elementos:
     - Seleção e manipulação do campo real
 
     - FROM, instrução que especifica qual objeto de banco de dados você está tentando acessar
+    
 Seguir um exemplo ilustrativo
 
         select
