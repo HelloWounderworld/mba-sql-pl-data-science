@@ -125,6 +125,7 @@ DCL inclui comandos como GRANT e REVOKE que lidam principalmente com os direitos
 Lista de comandos DCL: 
 
 - GRANT: Este comando dá aos usuários privilégios de acesso ao banco de dados.
+
 - REVOKE: Este comando retira os privilégios de acesso do usuário concedidos usando o comando GRANT.
 
 ### GRANT
@@ -141,6 +142,34 @@ Ao contrário do grant, o Revoke, serve para sessar a comunicação com duas con
 Seguir o link de leitura
 
     https://byjus.com/gate/tcl-full-form/#:~:text=What%20Is%20The%20Full%20Form,commands%20for%20maintaining%20its%20transactions.
+    https://www.geeksforgeeks.org/difference-between-grant-and-revoke/
+
+### Definição TCL - Linguagem de Controle de Transação
+As transações agrupam um conjunto de tarefas em uma única unidade de execução. Cada transação começa com uma tarefa específica e termina quando todas as tarefas do grupo são concluídas com sucesso. Se alguma das tarefas falhar, a transação falhará. Portanto, uma transação tem apenas dois resultados: sucesso ou falha.
+
+Os seguintes comandos TCL são usados ​​para controlar a execução de uma transação: 
+
+- BEGIN: Abre uma Transação.
+
+- COMMIT : Confirma uma transação.
+Este comando é usado para salvar os dados permanentemente. 
+
+Sempre que executamos qualquer um dos comandos DML como -INSERT, DELETE ou UPDATE, eles podem ser revertidos se os dados não forem armazenados permanentemente.
+
+Portanto, para estar no lado mais seguro, o comando COMMIT é usado. 
+
+- ROLLBACK : Reverte uma transação caso ocorra algum erro.
+Este comando é usado para obter os dados ou restaurar os dados para o último ponto de salvamento ou último estado confirmado. Se, por algum motivo, os dados inseridos, excluídos ou atualizados não estiverem corretos, você pode reverter os dados para um ponto de salvamento específico ou, se o ponto de salvamento não for feito, para o último estado confirmado. 
+
+- SAVEPOINT : Define um ponto de salvamento dentro de uma transação.
+
+- SET TRANSACTION: Especifica as características da transação.
+
+ Esses comandos são utilizados para manter a consistência do banco de dados e para o gerenciamento das transações feitas pelos comandos DML.
+
+ Uma transação é um conjunto de instruções SQL que são executadas nos dados armazenados no DBMS. Sempre que qualquer transação é feita, essas transações acontecem temporariamente no banco de dados. 
+ 
+ Portanto, para tornar as alterações permanentes, usamos comandos  TCL.
 
 ## Aula 08 (Que por algum motivo não foi abordado...) - DQL:
 Seguir o link de leitura

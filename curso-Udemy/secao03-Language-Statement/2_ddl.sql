@@ -55,7 +55,7 @@ CREATE SEQUENCE ID_TRAN
  -- Adicionando novo campo na tabela 
 ALTER TABLE funcionario ADD genero CHAR(1);
  
--- SELECT * FROM funcionario
+SELECT * FROM funcionario
 
  -- Renomeando campo/colunas da tabela
  alter table funcionario RENAME COLUMN  genero TO sexo;
@@ -66,7 +66,8 @@ ALTER TABLE funcionario ADD genero CHAR(1);
  -- Renomeando  tabela
 ALTER TABLE funcionario
 RENAME TO  pessoa; 
- --  retornando situaacao anterior
+
+ --  retornando situacao anterior
 ALTER TABLE pessoa
 RENAME TO  funcionario; 
  
