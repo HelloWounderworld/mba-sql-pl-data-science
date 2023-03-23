@@ -168,13 +168,13 @@ Todas as SELECT as intruções precisam de trÊs elementos:
     - FROM, instrução que especifica qual objeto de banco de dados você está tentando acessar
 Seguir um exemplo ilustrativo
 
-    select
+        select
 
-        payment_method,
-        sum(amount) AS amount
+            payment_method,
+            sum(amount) AS amount
 
-    from {{ ref('raw_payments') }}
-    group by 1
+        from {{ ref('raw_payments') }}
+        group by 1
 
 Neste exemplo, sua seleção da payment_method coluna e o somatório da amount coluna são a essência de sua consulta. O from {{ ref('raw_payments') }}especifica a tabela real da qual você deseja fazer a seleção.
 
