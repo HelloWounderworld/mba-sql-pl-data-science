@@ -326,6 +326,49 @@ Outros tipos de dados do SQL Server
 
 - identificador único - Ele armazena GUID (identificador globalmente exclusivo).
 
+### Tipos de Dados Oracle
+Tipos de dados Oracle String
+
+- CHAR(tamanho) - Ele é usado para armazenar dados de caracteres dentro do comprimento predefinido. Pode ser armazenado até 2000 bytes.
+
+- NCHAR(tamanho) - É usado para armazenar dados de caracteres nacionais dentro do comprimento predefinido. Pode ser armazenado até 2000 bytes.
+
+- VARCHAR2(tamanho) - Ele é usado para armazenar dados de cadeia variável dentro do comprimento predefinido. Pode ser armazenado até 4000 bytes.
+
+- VARCHAR(TAMANHO) - É o mesmo que VARCHAR2(tamanho). Você também pode usar VARCHAR(tamanho), mas é sugerido usar VARCHAR2(tamanho)
+
+- NVARCHAR2(tamanho) - Ele é usado para armazenar dados de string Unicode dentro do comprimento predefinido. Temos que especificar o tamanho do tipo de dados NVARCHAR2. Pode ser armazenado até 4000 bytes.
+
+Tipos de Dados Numéricos do Oracle
+
+- NÚMERO(p, s) - Contém precisão p e escala s. A precisão p pode variar de 1 a 38, e a escala s pode variar de -84 a 127.
+
+- FLUTUANTE(p) - É um subtipo do tipo de dados NUMBER. A precisão p pode variar de 1 a 126.
+
+- BINARY_FLOAT - É usado para precisão binária (32 bits). Requer 5 bytes, incluindo byte de comprimento.
+
+- BINARY_DOUBLE - É usado para precisão binária dupla (64 bits). Requer 9 bytes, incluindo byte de comprimento.
+
+Tipos de dados de data e hora do Oracle
+
+- DATA - Ele é usado para armazenar um formato válido de data e hora com um comprimento fixo. Seu alcance varia de 1º de janeiro de 4712 aC a 31 de dezembro de 9999 dC.
+
+- TIMESTAMP - É usado para armazenar a data válida no formato AAAA-MM-DD com hora hh:mm:ss.
+
+Tipos de dados de objetos grandes do Oracle (tipos LOB)
+
+- BLOB - É usado para especificar dados binários não estruturados. Seu alcance vai até 2 32 -1 bytes ou 4 GB.
+
+- BFILE - Ele é usado para armazenar dados binários em um arquivo externo. Seu alcance vai até 2 32 -1 bytes ou 4 GB.
+
+- CLOB - É usado para dados de caractere de byte único. Seu alcance vai até 2 32 -1 bytes ou 4 GB.
+
+- NCLOB - Ele é usado para especificar dados de um único byte ou conjunto de caracteres nacionais multibyte (NCHAR) de comprimento fixo. Seu alcance é de até 2 32 -1 bytes ou 4 GB.
+
+- RAW(tamanho) - Ele é usado para especificar dados binários brutos de comprimento variável. Seu alcance é de até 2000 bytes por linha. Seu tamanho máximo deve ser especificado.
+
+- CRU LONGO - Ele é usado para especificar dados binários brutos de comprimento variável. Seu alcance é de até 2 31 -1 bytes ou 2 GB, por linha.
+
 Seguir o pdf de referência
 
     Data_types.pdf
@@ -371,4 +414,15 @@ Seguir o link de leitura
 Bom, CONSTRAINTS/RESTRIÇÕES SQL são usadas para especificar regras para dados em uma tabela.
 
 ### Restrições de criação de SQL
+As restrições podem ser especificadas quando a tabela é criada com a CREATE TABLE instrução ou depois que a tabela é criada com a ALTER TABLE instrução.
+
+Sintaxe
+
+    CREATE TABLE table_name (
+        column1 datatype constraint,
+        column2 datatype constraint,
+        column3 datatype constraint,
+        ....
+    );
+
 
