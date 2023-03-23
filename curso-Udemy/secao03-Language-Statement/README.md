@@ -92,6 +92,23 @@ Seguir o link para leitura
 
     https://satoricyber.com/glossary/ddl-data-definition-language/#:~:text=DDL%20statements%20are%20similar%20to,considered%20a%20subset%20of%20SQL.
 
+### Definição DDL - Data Definition Language
+DDL é um conjunto de comandos SQL usados ​​para criar, modificar e excluir estruturas de banco de dados, mas não dados. Em outras palavras, o DDL são as sintaxes que permite criar e modificar objetos de banco de dados, como tabelas, índices e usuários.
+
+Lista de comandos DDL: 
+
+- CREATE : Este comando é usado para criar o banco de dados ou seus objetos (como tabela, índice, função, visualizações, procedimento de armazenamento e gatilhos).
+
+- DROP : Este comando é usado para deletar objetos do banco de dados.
+
+- ALTER : usado para alterar a estrutura do banco de dados.
+
+- TRUNCATE : É usado para remover todos os registros de uma tabela, inclusive todos os espaços alocados para que os registros sejam removidos.
+
+- COMENTÁRIO : usado para adicionar comentários ao dicionário de dados.
+
+- RENAME : Usado para renomear um objeto existente no banco de dados.
+
 Para o uso de teste vamos usar o arquivo 2_ddl.sql.
 
 ## Aula 05 - DCL GRANT:

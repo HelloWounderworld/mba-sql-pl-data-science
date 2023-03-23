@@ -1,4 +1,4 @@
-# Seção 14: Projeto - Mini ERP MULTI EMPRESAS:
+# Seção 14: Projeto - Mini ERP MULTI EMPRESAS - Opcional (Recomendo assistir mais nos momentos em que vc estiver revisando):
 
 ## Aula 01 - ORVERVIEW PROJETO:
 
