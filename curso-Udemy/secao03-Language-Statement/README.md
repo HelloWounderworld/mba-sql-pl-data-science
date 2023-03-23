@@ -91,7 +91,6 @@ Para o uso de teste vamos usar o arquivo 1_dml.sql.
 Seguir o link para leitura
 
     https://satoricyber.com/glossary/ddl-data-definition-language/#:~:text=DDL%20statements%20are%20similar%20to,considered%20a%20subset%20of%20SQL.
-    https://www.geeksforgeeks.org/difference-between-ddl-and-dml-in-dbms/?ref=rp
 
 ### Definição DDL - Data Definition Language
 DDL é um conjunto de comandos SQL usados ​​para criar, modificar e excluir estruturas de banco de dados, mas não dados. Em outras palavras, o DDL são as sintaxes que permite criar e modificar objetos de banco de dados, como tabelas, índices e usuários.
@@ -113,6 +112,10 @@ Lista de comandos DDL:
 Para o uso de teste vamos usar o arquivo 2_ddl.sql.
 
 ### Diferença entre DDL e DML
+Seguir o link de leitura
+
+    https://www.geeksforgeeks.org/difference-between-ddl-and-dml-in-dbms/?ref=rp
+    
 É importante ressaltar que DDL e DML são diferentes conceitos.
 
 DDL é a linguagem de definição de dados usada para definir estruturas de dados. Por exemplo: criar tabela, alterar tabela são instruções em SQL. DML é a Linguagem de Manipulação de Dados usada para manipular os próprios dados. Por exemplo: insert, update e delete são instruções em SQL.
