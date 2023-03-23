@@ -1,4 +1,5 @@
 # Seção 03: LANGUAGE STATEMENTS:
+Realizar as leituras dos links e ir colocandos os pontos importantes nas minhas notas e realizar testes!
 
 ## Aula 01 - INTRODUÇÃO LANGUAGE STATEMENTS:
 Seguir o link para leitura
@@ -6,6 +7,10 @@ Seguir o link para leitura
     https://www.javatpoint.com/sql-tutorial
     https://www.geeksforgeeks.org/sql-ddl-dql-dml-dcl-tcl-commands/
     https://docs.oracle.com/cd/B14156_01/doc/B13812/html/sqcmd.htm
+
+Vamos deixar um ponto bem claro aqui sobre o SQL.
+
+Ele não é um sistem de Banco de dados, mas sim é uma linguagem de consulta.
 
 ## Aula 02 - DML:
 Seguir o link para leitura
