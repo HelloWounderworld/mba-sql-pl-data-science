@@ -7,6 +7,8 @@ Seguir o link de leitura
     https://www.devmedia.com.br/sql-utilizando-o-operador-union-e-union-all/37457
     https://stackoverflow.com/questions/905379/what-is-the-difference-between-join-and-union
 
+
+
 O arquivo para entender o conceito acima na prática seria o UNION.sql.
 
 ## Aula 02 - JOINS:
