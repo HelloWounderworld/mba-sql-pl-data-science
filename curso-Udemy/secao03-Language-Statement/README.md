@@ -80,12 +80,80 @@ Este comando ajuda a inserir os dados ou registros nas tabelas do banco de dados
 
 Vale a pena, depois, dar uma olhada sobre o comparativo entre SQL e NoSQL.
 
-## Aula 02 - DML:
+### Vantagens do SQL
+Bom, principalmente, para áreas que envolve ciências de dados ou, de modo mais geral, que envolve a necessidade de organizar e analisar um grande volume de dados, o SQL, aplicado para banco de dados relacional, acaba sendo a mais vantajosa, por conta da sua estrutura simples de códificação, o que não exige tanto esforço, e pela sua alta velocidade de requisição.
+
+Organizando em tópicos, mais ou menos, ficaria assim:
+
+- Nenhuma programação necessária:
+O SQL não requer um grande número de linhas de codificação para gerenciar os sistemas de banco de dados. Podemos acessar e manter facilmente o banco de dados usando regras sintáticas SQL simples. Essas regras simples tornam o SQL amigável.
+
+- Processamento de consulta de alta velocidade:
+Uma grande quantidade de dados é acessada de forma rápida e eficiente a partir do banco de dados usando consultas SQL. As operações de inserção, exclusão e atualização de dados também são realizadas em menos tempo.
+
+- Linguagem Padronizada:
+O SQL segue os padrões ISO e ANSI estabelecidos há muito tempo, que oferecem uma plataforma uniforme em todo o mundo para todos os seus usuários.
+
+- Portabilidade:
+A linguagem de consulta estruturada pode ser facilmente usada em computadores desktop, laptops, tablets e até smartphones. Também pode ser usado com outros aplicativos de acordo com os requisitos do usuário.
+
+- Linguagem interativa:
+Podemos facilmente aprender e compreender a linguagem SQL. Também podemos usar essa linguagem para comunicação com o banco de dados porque é uma linguagem de consulta simples. Essa linguagem também é utilizada para receber as respostas de consultas complexas em poucos segundos.
+
+- Mais de uma visualização de dados:
+A linguagem SQL também ajuda a fazer as múltiplas visualizações da estrutura do banco de dados para os diferentes usuários do banco de dados.
+
+### Desvantagens do SQL
+São elas:
+
+- Custo:
+O custo de operação de algumas versões do SQL é alto. É por isso que alguns programadores não podem usar a linguagem de consulta estruturada.
+
+- A interface é complexa:
+Outra grande desvantagem é que a interface da linguagem de consulta estruturada é difícil, o que torna difícil para os usuários SQL usá-la e gerenciá-la.
+
+- Controle parcial de banco de dados:
+As regras de negócios estão ocultas. Portanto, os profissionais de dados e usuários que usam essa linguagem de consulta não podem ter controle total do banco de dados.
+
+### Categorizando os tipos de comandos
+Bom, vimos acima que o SQL ele tem inúmeros tipos de comandos, donde foi apresentados as mais usuais. Porém, ficaria mais fácil entender ao todo a estrutura do SQL se organizados elas nas seguintes categorias, que é o tema foco dessa seção:
+
+- DDL - Linguagem de Definição de Dados
+
+- DQL - linguagem de consulta de dados
+
+- DML – Linguagem de Manipulação de Dados
+
+- DCL - Linguagem de Controle de Dados
+
+- TCL – Linguagem de Controle de Transação
+
+Iremos abordar uma por uma essas categorias para vc conseguir ter uma visão bem geral da arquitetura do conceito dessa linguagem de consulta.
+
+## Aula 02 - DML (Data Manipulation Language):
 Seguir o link para leitura
 
     http://www.bosontreinamentos.com.br/bancos-de-dados/comandos-dml-sql-e-sua-sintaxe/
     https://docs.getdbt.com/terms/dml#:~:text=Data%20Manipulation%20Language%20(DML)%20is,level%20data%20from%20database%20tables
     https://docs.oracle.com/cd/B14156_01/doc/B13812/html/sqcmd.htm#CHDJCBDH
+
+### Definição DML - Data Manipulation Language
+É uma classe de declaração de SQL que é usado para requisitar (query), editar (edit),  adicionar (add) e deletar (delete) dados da linha ou coluna de uma base de dados, tabelas ou views.
+
+### Comandos usados
+Os comandos mais usados dessa categoria de declarações são:
+
+- INSERT - Criar um novo registro (linha) em uma tabela
+
+- UPDATE - Permite modificar registros em uma tabela
+
+- DELETE - Exclui um ou mais registros selecionados de uma tabela
+
+- SELECT INTO - Realiza uma consulta em uma tabela e inclui o resultado como um novo registro em outra tabela.
+
+Claro, a lista acima são as mais usuais. Porém, existem outras que se encaixam dentro dessa categoria de declarações. São elas:
+
+- EXPLAIN PLAN select_command - Determina um plano de execução em uma requisição/A requisição para qual você determina um plano de execução.
 
 Para o uso de teste vamos usar o arquivo 1_dml.sql.
 
