@@ -111,7 +111,7 @@ Lista de comandos DDL:
 
 Para o uso de teste vamos usar o arquivo 2_ddl.sql.
 
-## Aula 05 - DCL GRANT:
+## Aula 05 e 06 - DCL GRANT e REVOKE:
 Seguir o link de leitura
 
     https://docs.oracle.com/cd/B14156_01/doc/B13812/html/sqcmd.htm
@@ -119,17 +119,20 @@ Seguir o link de leitura
     https://www.educative.io/answers/what-are-the-grant-and-revoke-commands-of-dcl
     https://www.geeksforgeeks.org/difference-between-grant-and-revoke/
 
+### Definição DCL - Linguagem de Controle de Dados
+DCL inclui comandos como GRANT e REVOKE que lidam principalmente com os direitos, permissões e outros controles do sistema de banco de dados.
+
+Lista de comandos DCL: 
+
+- GRANT: Este comando dá aos usuários privilégios de acesso ao banco de dados.
+- REVOKE: Este comando retira os privilégios de acesso do usuário concedidos usando o comando GRANT.
+
+### GRANT
 Para o uso de teste vamos usar o arquivo 3_dcl_grant.sql usando a conexão Ora XE.
 
 Basicamente, o Grant serve para permitir que duas conexões se comuniquem.
 
-## Aula 06 - DCL REVOKE:
-Seguir o link de leitura
-
-    https://www.microfocus.com/documentation/enterprise-developer/ed80/ED-Eclipse/HRQRRHSQLX45.html
-    https://docs.oracle.com/cd/B14156_01/doc/B13812/html/sqcmd.htm
-    https://www.geeksforgeeks.org/difference-between-grant-and-revoke/
-
+### REVOKE
 Para o uso de teste vamos usar o arquivo 4_dcl_revoke_aula.sql.
 
 Ao contrário do grant, o Revoke, serve para sessar a comunicação com duas conexões.
@@ -138,3 +141,17 @@ Ao contrário do grant, o Revoke, serve para sessar a comunicação com duas con
 Seguir o link de leitura
 
     https://byjus.com/gate/tcl-full-form/#:~:text=What%20Is%20The%20Full%20Form,commands%20for%20maintaining%20its%20transactions.
+
+## Aula 08 (Que por algum motivo não foi abordado...) - DQL:
+Seguir o link de leitura
+
+    https://www.geeksforgeeks.org/sql-ddl-dql-dml-dcl-tcl-commands/
+
+### Definição DQL - Linguagem de Consulta de Dados
+As instruções DQL são usadas para realizar consultas nos dados dentro dos objetos do esquema.
+
+O objetivo do comando DQL é obter alguma relação de esquema com base na consulta passada para ele. Podemos definir DQL da seguinte forma: é um componente da instrução SQL que permite obter dados do banco de dados e impor ordem sobre eles. Inclui a instrução SELECT. Este comando permite obter os dados do banco de dados para realizar operações com ele. Quando um SELECT é acionado contra uma tabela ou tabelas, o resultado é compilado em uma tabela temporária adicional, que é exibida ou talvez recebida pelo programa, ou seja, um front-end.
+
+Lista de DQL: 
+
+- SELECT : É usado para recuperar dados do banco de dados.
