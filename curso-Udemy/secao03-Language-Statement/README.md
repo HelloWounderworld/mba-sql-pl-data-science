@@ -91,6 +91,7 @@ Para o uso de teste vamos usar o arquivo 1_dml.sql.
 Seguir o link para leitura
 
     https://satoricyber.com/glossary/ddl-data-definition-language/#:~:text=DDL%20statements%20are%20similar%20to,considered%20a%20subset%20of%20SQL.
+    https://www.geeksforgeeks.org/difference-between-ddl-and-dml-in-dbms/?ref=rp
 
 ### Definição DDL - Data Definition Language
 DDL é um conjunto de comandos SQL usados ​​para criar, modificar e excluir estruturas de banco de dados, mas não dados. Em outras palavras, o DDL são as sintaxes que permite criar e modificar objetos de banco de dados, como tabelas, índices e usuários.
@@ -110,6 +111,11 @@ Lista de comandos DDL:
 - RENAME : Usado para renomear um objeto existente no banco de dados.
 
 Para o uso de teste vamos usar o arquivo 2_ddl.sql.
+
+### Diferença entre DDL e DML
+É importante ressaltar que DDL e DML são diferentes conceitos.
+
+DDL é a linguagem de definição de dados usada para definir estruturas de dados. Por exemplo: criar tabela, alterar tabela são instruções em SQL. DML é a Linguagem de Manipulação de Dados usada para manipular os próprios dados. Por exemplo: insert, update e delete são instruções em SQL.
 
 ## Aula 05 e 06 - DCL GRANT e REVOKE:
 Seguir o link de leitura
@@ -152,6 +158,7 @@ Os seguintes comandos TCL são usados ​​para controlar a execução de uma t
 - BEGIN: Abre uma Transação.
 
 - COMMIT : Confirma uma transação.
+
 Este comando é usado para salvar os dados permanentemente. 
 
 Sempre que executamos qualquer um dos comandos DML como -INSERT, DELETE ou UPDATE, eles podem ser revertidos se os dados não forem armazenados permanentemente.
@@ -159,9 +166,12 @@ Sempre que executamos qualquer um dos comandos DML como -INSERT, DELETE ou UPDAT
 Portanto, para estar no lado mais seguro, o comando COMMIT é usado. 
 
 - ROLLBACK : Reverte uma transação caso ocorra algum erro.
+
 Este comando é usado para obter os dados ou restaurar os dados para o último ponto de salvamento ou último estado confirmado. Se, por algum motivo, os dados inseridos, excluídos ou atualizados não estiverem corretos, você pode reverter os dados para um ponto de salvamento específico ou, se o ponto de salvamento não for feito, para o último estado confirmado. 
 
 - SAVEPOINT : Define um ponto de salvamento dentro de uma transação.
+
+Este comando é usado para salvar temporariamente os dados em um determinado ponto, para que sempre que necessário possa ser revertido para aquele determinado ponto.
 
 - SET TRANSACTION: Especifica as características da transação.
 
