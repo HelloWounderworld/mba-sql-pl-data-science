@@ -226,6 +226,8 @@ Seguir o link de leitura
     https://www.devmedia.com.br/mer-e-der-modelagem-de-bancos-de-dados/14332#:~:text=O%20Modelo%20Entidade%20Relacionamento%20(tamb%C3%A9m,elas%20se%20relacionam%20entre%20si%20(
     https://www.remessaonline.com.br/blog/mer-e-der-o-que-e-as-principais-diferencas-e-como-usar/
 
+
+
 ## Aula 13 - CARDINALIDADE:
 Seguir o link para leitura
 
@@ -433,14 +435,91 @@ As seguintes restrições são comumente usadas em SQL:
 
 - NOT NULL - Garante que uma coluna não pode ter um valor NULL
 
+Exemplo
+
+    CREATE TABLE Colleges (
+        college_id INT NOT NULL,
+        college_code VARCHAR(20) NOT NULL,
+        college_name VARCHAR(50)
+    );
+
 - UNIQUE - Garante que todos os valores em uma coluna sejam diferentes
 
-- PRIMARY KEY - Uma combinação de a NOT NULLe UNIQUE. Identifica exclusivamente cada linha em uma tabela
+A UNIQUE restrição em uma coluna significa que a coluna deve ter um valor exclusivo.
+
+Exemplo
+
+    CREATE TABLE Colleges (
+        college_id INT NOT NULL UNIQUE,
+        college_code VARCHAR(20) UNIQUE,
+        college_name VARCHAR(50)
+    );
+
+- PRIMARY KEY - Uma combinação de a NOT NULL e UNIQUE. Identifica exclusivamente cada linha em uma tabela.
+
+A PRIMARY KEY restrição é simplesmente uma combinação de restrições NOT NULL e UNIQUE. Isso significa que o valor da coluna é usado para identificar exclusivamente a linha.
+
+Por exemplo
+
+    CREATE TABLE Colleges (
+        college_id INT PRIMARY KEY,
+        college_code VARCHAR(20) NOT NULL,
+        college_name VARCHAR(50)
+    );
+
+Aqui, o valor do college_id coluna é um identificador exclusivo para uma linha. Da mesma forma, não pode armazenar NULL valor e deve ser UNIQUE.
 
 - FOREIGN KEY - Impede ações que destruiriam links entre tabelas
 
-- CHECK - Garante que os valores em uma coluna satisfaçam uma condição específica
+A restrição FOREIGN KEY (REFERENCES em alguns bancos de dados) em uma coluna é usada para referenciar um registro que existe em outra tabela.
+
+Por exemplo
+
+    CREATE TABLE Orders (
+        order_id INT PRIMARY KEY,
+        customer_id int REFERENCES Customers(id)
+    );
+
+Aqui, o valor do college_code coluna referencia a linha em outra tabela chamada Clientes.
+
+- CHECK - Garante que os valores em uma coluna satisfaçam uma condição específica. Em outras palavras, verifica a condição antes de permitir valores em uma tabela.
+
+Por exemplo
+
+    CREATE TABLE Orders (
+        order_id INT PRIMARY KEY,
+        amount int CHECK (amount >= 100)
+    );
+
+Aqui, o valor do quantia coluna deve ser maior ou igual a 100. Caso contrário, a instrução SQL resultará em um erro.
 
 - DEFAULT - Define um valor padrão para uma coluna se nenhum valor for especificado
 
-- CREATE INDEX - Usado para criar e recuperar dados do banco de dados muito rapidamente
+Por exemplo
+
+    CREATE TABLE College (
+        college_id INT PRIMARY KEY,
+        college_code VARCHAR(20),
+        college_country VARCHAR(20) DEFAULT 'US'
+    );
+
+Aqui, o valor padrão do college_country coluna é US.
+
+Se tentarmos armazenar o valor NULL no college_country coluna, seu valor será US.
+
+- CREATE INDEX - Usado para criar e recuperar dados do banco de dados muito rapidamente.
+
+Por exemplo
+
+    -- create table
+    CREATE TABLE Colleges (
+        college_id INT PRIMARY KEY,
+        college_code VARCHAR(20) NOT NULL,
+        college_name VARCHAR(50)
+    );
+
+    -- create index
+    CREATE INDEX college_index
+    ON Colleges(college_code);
+
+Aqui, o comando SQL cria um índice chamado customer_index na tabela Customers usando a coluna customer_id.
