@@ -3,6 +3,7 @@ Seguir o link de leitura
 
     https://www.javatpoint.com/sql-tutorial
     https://www.javatpoint.com/pl-sql-tutorial
+    https://www.w3schools.com/sql/default.asp
 
 ## Aula 01 - Apresentação do Instrutor:
 Seguir o link para leitura
@@ -283,6 +284,48 @@ Tipo de dados de string do SQL Server:
 
 - imagem - Também é um tipo de dados de cadeia binária de largura variável. Seu tamanho pode ser de até 2 GB.
 
+Tipos de dados numéricos do SQL Server
+
+- pedaço - É um número inteiro que pode ser 0, 1 ou nulo.
+
+- minúsculoint - Permite números inteiros de 0 a 255.
+
+- Smallint - Permite números inteiros entre -32.768 e 32.767.
+
+- Int - Permite números inteiros entre -2.147.483.648 e 2.147.483.647.
+
+- bigint - Permite números inteiros entre -9.223.372.036.854.775.808 e 9.223.372.036.854.775.807.
+
+- flutuar(n) - Ele é usado para especificar dados de número de precisão flutuante de -1,79E+308 a 1,79E+308. O parâmetro n indica se o campo deve conter 4 ou 8 bytes. O valor padrão de n é 53.
+
+- real - É um dado numérico de precisão flutuante de -3,40E+38 a 3,40E+38.
+
+- dinheiro - É usado para especificar dados monetários de -922.337.233.685.477,5808 a 922.337.203.685.477,5807.
+
+Tipo de dados de data e hora do SQL Server
+
+- data hora - É usado para especificar a combinação de data e hora. Ele suporta o intervalo de 1º de janeiro de 1753 a 31 de dezembro de 9999 com uma precisão de 3,33 milissegundos.
+
+- datetime2 - É usado para especificar a combinação de data e hora. Ele suporta o intervalo de 1º de janeiro de 0001 a 31 de dezembro de 9999 com uma precisão de 100 nanossegundos.
+
+- data - É usado apenas para armazenar data. Ele suporta o intervalo de 1º de janeiro de 0001 a 31 de dezembro de 9999.
+
+- tempo - Ele armazena o tempo apenas com uma precisão de 100 nanossegundos.
+
+- carimbo de data/hora - Ele armazena um número exclusivo quando uma nova linha é criada ou modificada. O valor do carimbo de hora é baseado em um relógio interno e não corresponde ao tempo real. Cada tabela pode conter apenas uma variável de carimbo de data/hora.
+
+Outros tipos de dados do SQL Server
+
+- Sql_variant - Ele é usado para vários tipos de dados, exceto text, timestamp e ntext. Armazena até 8000 bytes de dados.
+
+- XML - Ele armazena dados formatados em XML. Máximo 2 GB.
+
+- cursor - Ele armazena uma referência a um cursor usado para operações de banco de dados.
+
+- mesa - Ele armazena o conjunto de resultados para processamento posterior.
+
+- identificador único - Ele armazena GUID (identificador globalmente exclusivo).
+
 Seguir o pdf de referência
 
     Data_types.pdf
@@ -324,3 +367,8 @@ Seguir o link de leitura
 
     https://www.w3schools.com/sql/sql_constraints.asp#:~:text=SQL%20constraints%20are%20used%20to%20specify%20rules%20for%20the%20data,action%2C%20the%20action%20is%20aborted.
     https://www.devmedia.com.br/artigo-sql-magazine-31-tutorial-sql-constraints/6761
+
+Bom, CONSTRAINTS/RESTRIÇÕES SQL são usadas para especificar regras para dados em uma tabela.
+
+### Restrições de criação de SQL
+
