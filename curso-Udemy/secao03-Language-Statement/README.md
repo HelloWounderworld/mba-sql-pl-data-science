@@ -2,6 +2,26 @@
 Realizar as leituras dos links e ir colocandos os pontos importantes nas minhas notas e realizar testes!
 
 ## Aula 01 - INTRODUÇÃO LANGUAGE STATEMENTS:
+### Sintaxe SQL
+Seguir link de leitura
+
+    https://www.javatpoint.com/sql-syntax
+
+Bom, antes mesmo de começarmos a ir criando as tabelas de curso, etc... Vamos entender direito as sintaxes.
+
+A sintaxe da linguagem de consulta estruturada é um conjunto exclusivo de regras e diretrizes, que não diferencia maiúsculas de minúsculas. Sua sintaxe é definida e mantida pelos padrões ISO e ANSI.
+
+Ciente do case-insensitive do SQL, aqui está um tópido de boas práticas quando for codar com essa linguagem de consulta:
+
+- Você pode escrever as palavras-chave SQL em maiúsculas e minúsculas, mas escrever as palavras-chave SQL em maiúsculas melhora a legibilidade da consulta SQL.
+
+- As instruções SQL ou a sintaxe dependem das linhas de texto. Podemos colocar uma única instrução SQL em uma ou várias linhas de texto.
+
+- Você pode executar a maior parte da ação em um banco de dados com instruções SQL.
+
+- A sintaxe SQL depende da álgebra relacional e do cálculo relacional de tupla.
+
+### Language Statement
 Bom, vimos, até agora, que o SQL ele tem inúmeros tipos de comandos, donde foi apresentados as mais usuais. Porém, ficaria mais fácil entender ao todo a estrutura do SQL se organizados elas nas seguintes categorias, que é o tema foco dessa seção:
 
 - DDL - Linguagem de Definição de Dados

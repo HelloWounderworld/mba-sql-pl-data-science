@@ -130,14 +130,13 @@ Seguir o link de configuração do SQL Developer
 
     https://docs.oracle.com/en/database/oracle/sql-developer/19.2/
 
-No caso, vamos precisar criar uma coneção de forma manual, donde vc colocará como nome "Ora XE" e com nome de usuário "system" e a senha que vc configurou na instalação do sql-developer acima.
+No caso, vamos precisar criar uma conexão de forma manual, donde vc colocará como nome "Ora XE" e com nome de usuário "system" e a senha que vc configurou na instalação do sql-developer acima.
 
 ## Aula 05 - CRIANDO TABLESPACE:
-Seguir link de leitura
+Seguir o link de leitura
 
-    https://www.javatpoint.com/sql-syntax
-
-Bom, antes mesmo de começarmos a ir criando as tabelas de curso, etc... Vamos entender direito as sintaxes.
+    https://www.javatpoint.com/sql-table
+    https://www.oracletutorial.com/oracle-administration/oracle-create-tablespace/
 
 Seguir o arquivo
 
@@ -176,6 +175,27 @@ Seguir o link de leitura
     https://pt.stackoverflow.com/questions/480913/qual-a-diferen%C3%A7a-entre-sql-server-mysql-e-outros-sql#:~:text=SQL%20%C3%A9%20uma%20linguagem%20de,o%20banco%20de%20dados%20ORACLE.
     https://www.devmedia.com.br/conhecendo-o-pl-sql/24763
 
+Basicamente, o PL/SQL ele é uma linguagem estruturada em blocos que pode conter vários blocos. No caso, os programas de PL/SQL são blocos lógicos que podem conter qualquer número de sub-blocos aninhados.
+
+PL/SQL significa Procedural Language extension of SQL que é usado no Oracle.
+
+### Funcionalidades PL/SQL
+Inclui elementos de linguagem procedural como condições e loops. Permite declaração de constantes e variáveis, procedimentos e funções, tipos e variáveis desses tipos e gatilhos.
+
+Com PL/SQL, você pode usar instruções SQL para manipular dados Oracle e fluxo de instruções de controle para processar os dados.
+
+O PL/SQL é conhecido por sua combinação do poder de manipulação de dados do SQL com o poder de processamento de dados das linguagens procedurais. Ele herda a robustez, segurança e portabilidade do Oracle Database.
+
+PL/SQL não diferencia maiúsculas de minúsculas, portanto, você pode usar letras minúsculas ou maiúsculas, exceto em strings e caracteres literais. Uma linha de texto PL/SQL contém grupos de caracteres conhecidos como unidades lexicais. Pode ser classificado da seguinte forma:
+
+- Delimitadores
+
+- Identificadores
+
+- Literais
+
+- Comentários
+
 ## Aula 08 e 09 - CONCEITOS DB PARTE 1 e 2:
 Seguir o link de leitura
 
@@ -213,16 +233,55 @@ Seguir o link para leitura
     https://www.ime.usp.br/~andrers/aulas/bd2005-1/aula7.html
     https://consultabd.wordpress.com/2019/08/28/cardinalidade/
 
-## Aula 14 - SGBD:
+## Aula 14 - SGBD - Sistema de Gerenciamento de banco de dados:
 Seguir o link para leitura
 
     https://es.wikipedia.org/wiki/Sistema_de_gesti%C3%B3n_de_bases_de_datos
     https://www.treinaweb.com.br/blog/o-que-e-um-sgbd#:~:text=Data%20Base%20Management%20System%20ou,as%20bases%20de%20dados%20utilizadas
 
+Um sistema de gerenciamento de banco de dados ou DBMS (do inglês : Data Base Management System ou DBMS) é um software que permite gerenciar um banco de dados . Isso significa que através deste programa você pode usar, configurar e extrair informações armazenadas. Os usuários podem acessar as informações por meio de ferramentas específicas de consulta e geração de relatórios, ou por meio de aplicativos para essa finalidade.
+
+Esses sistemas também fornecem métodos para manter a integridade dos dados, para gerenciar o acesso do usuário aos dados e para recuperar informações se o sistema for corrompido. Eles permitem que as informações do banco de dados sejam apresentadas em vários formatos. A maioria inclui um gerador de relatórios. Também podem incluir um módulo gráfico que permite a apresentação da informação com gráficos e tabelas.
+
+Os dados geralmente são acessados ​​por meio de linguagens de consulta, linguagens de alto nível que simplificam a tarefa de construir aplicações. Também simplificam as consultas e a apresentação das informações. Um DBMS permite que você controle o acesso aos dados, garanta sua integridade, gerencie o acesso simultâneo a eles, recupere dados após uma falha do sistema e faça cópias de backup. As bases de dados e os seus sistemas de gestão são essenciais para qualquer área de negócio e devem ser geridos com cuidado.
+
 ## Aula 15 - TIPO DE DADOS:
 Seguir o link para leitura
 
+    https://www.javatpoint.com/sql-data-types
     https://docs.oracle.com/cd/B28359_01/server.111/b28318/datatype.htm#CNCPT012
+
+Os tipos de dados são usados ​​para representar a natureza dos dados que podem ser armazenados na tabela do banco de dados. Por exemplo, em uma determinada coluna de uma tabela, se quisermos armazenar um tipo de dados string, teremos que declarar um tipo de dados string dessa coluna.
+
+Tipos de dados classificados principalmente em três categorias para cada banco de dados.
+
+- Tipos de dados de sequência
+
+- Tipos de dados numéricos
+
+- Data e hora tipos de dados
+
+Tipo de dados de string do SQL Server:
+
+- char(n) - É um tipo de dados de cadeia de caracteres de largura fixa. Seu tamanho pode ser de até 8000 caracteres.
+
+- varchar(n) - É um tipo de dados de cadeia de caracteres de largura variável. Seu tamanho pode ser de até 8000 caracteres.
+
+- varchar(max) - É um tipo de dados de cadeia de caracteres de largura variável. Seu tamanho pode ser de até 1.073.741.824 caracteres.
+
+- texto - É um tipo de dados de cadeia de caracteres de largura variável. Seu tamanho pode ser de até 2 GB de dados de texto.
+
+- nchar - É um tipo de dados de string Unicode de largura fixa. Seu tamanho pode ser de até 4000 caracteres.
+
+- nvarchar - É um tipo de dados de string Unicode de largura variável. Seu tamanho pode ser de até 4000 caracteres.
+
+- ntexto - É um tipo de dados de string Unicode de largura variável. Seu tamanho pode ser de até 2 GB de dados de texto.
+
+- binário(n) - É um tipo de dados de cadeia binária de largura fixa. Seu tamanho pode ser de até 8000 bytes.
+
+- varbinário - É um tipo de dados de cadeia binária de largura variável. Seu tamanho pode ser de até 8000 bytes.
+
+- imagem - Também é um tipo de dados de cadeia binária de largura variável. Seu tamanho pode ser de até 2 GB.
 
 Seguir o pdf de referência
 
@@ -231,6 +290,7 @@ Seguir o pdf de referência
 ## Aula 16 - ACID E CRUD:
 - ACID - Seguir o link de leitura
 
+    https://www.javatpoint.com/crud-operations-in-sql
     https://es.wikipedia.org/wiki/ACID
     https://blog.betrybe.com/tecnologia/acid-porque-usar/
 
