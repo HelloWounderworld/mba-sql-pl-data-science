@@ -155,6 +155,29 @@ Claro, a lista acima são as mais usuais. Porém, existem outras que se encaixam
 
 - EXPLAIN PLAN select_command - Determina um plano de execução em uma requisição/A requisição para qual você determina um plano de execução.
 
+As instruções DML primárias, como foi listado acima, são SELECT, INSERT, DELETE e UPDATE. Com exceção das SELECT instruções, todas as outras são aplicáveis ​​apenas aos dados dentro das tabelas em um banco de dados. A principal diferença entre SELECT e todas as outras instruções DML é seu impacto nos dados em nível de linha:
+
+- Para alterar os dados reais que residem nas tabelas, use as instruções INSERT, DELETE e UPDATE.
+
+- Para acessar os dados no objeto databse, use SELECT instruções.
+Todas as SELECT as intruções precisam de trÊs elementos:
+    - SELECT cláusula no início
+
+    - Seleção e manipulação do campo real
+
+    - FROM, instrução que especifica qual objeto de banco de dados você está tentando acessar
+Seguir um exemplo ilustrativo
+
+    select
+
+        payment_method,
+        sum(amount) AS amount
+
+    from {{ ref('raw_payments') }}
+    group by 1
+
+Neste exemplo, sua seleção da payment_method coluna e o somatório da amount coluna são a essência de sua consulta. O from {{ ref('raw_payments') }}especifica a tabela real da qual você deseja fazer a seleção.
+
 Para o uso de teste vamos usar o arquivo 1_dml.sql.
 
 ## Aula 03 e 04 - DDL PARTE 1 e 2:
