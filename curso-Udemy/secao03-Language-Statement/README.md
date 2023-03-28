@@ -197,3 +197,7 @@ O objetivo do comando DQL é obter alguma relação de esquema com base na consu
 Lista de DQL: 
 
 - SELECT : É usado para recuperar dados do banco de dados.
+
+    A sua estrutura sintática é 
+
+        SELECT "column_name" FROM "table_name";    
