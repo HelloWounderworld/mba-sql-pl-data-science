@@ -51,11 +51,83 @@ Os comandos mais usados dessa categoria de declarações são:
 
 - INSERT - Criar um novo registro (linha) em uma tabela
 
+    Vamos estudar as suas sintaxes.
+
+    No caso, para inserir um dado diretamente em uma tabela
+
+        INSERT INTO table_name VALUES (value1, value2, value3....);
+
+    Essa forma de inserção vc não precisa especificar a coluna da tabela onde vc estiver inserindo o dado.
+
+    E tem, tbm, a forma em especificar a coluna
+
+        INSERT INTO table_name (column1, column2, column3....) VALUES (value1, value2, value3.....);
+
+    Inserindo dados atráves da declaração SELECT. A sua sintaxe
+
+        INSERT INTO table_name  [(column1, column2, .... column)] SELECT column1, column2, .... Column N FROM table_name [WHERE condition];
+
+    Seguir o link de leitura
+
+        https://www.javatpoint.com/sql-insert
+
 - UPDATE - Permite modificar registros em uma tabela
+
+    Lembrando que o UPDATE vale mais para dados que já estão presentes no banco de dados.
+
+    A sua sintaxe para aplicar a atualização é o seguinte
+
+        UPDATE table_name SET [column_name1= value1,... column_nameN = valueN] [WHERE condition]
+
+    A sintaxe em sua forma simplificada é o seguinte
+
+        UPDATE table_name SET column_name = expression WHERE conditions
+
+    Podemos usar a declaração SELECT para atualizar um registro através da declaração UPDATE
+
+        UPDATE tableDestination SET tableDestination.col = value WHERE EXISTS (SELECT col2.value FROM  tblSource WHERE tblSource.join_col = tblDestination. Join_col AND  tblSource.Constraint = value)
+    
+    Ou vc pode tentar essa tbm
+
+        UPDATE Table SET Table.column1 = othertable.column 1, Table.column2 = othertable.column 2 FROM Table INNER JOIN Other_table ON Table.id = other_table.id 
+
+    Seguir o link de leitura para mais funcionalidades de UPDATE
+
+        https://www.javatpoint.com/sql-update
 
 - DELETE - Exclui um ou mais registros selecionados de uma tabela
 
+    A sintaxe para aplicar essa lógica é o seguinte
+
+        DELETE FROM table_name [WHERE condition];
+
+    Aqui o table_name é a tabela na qual tem que ser deletado. O WHERE em SQL DELETE é opcional. Ou seja, se vc usar o DELETE sem o WHERE, significa que vc estará excluindo todos os dados da tabela. A exclusão se dá por linha.
+
+    Em Oracle, vc não pode usar o "*" da seguinte forma
+
+        DELETE * FROM table_name
+
+    Isso não irá excluir os dados da tabela inteira.
+
+    Seguir o link de leitura para mais funcionalidades do DELETE
+
+        https://www.javatpoint.com/sql-delete
+
 - SELECT INTO - Realiza uma consulta em uma tabela e inclui o resultado como um novo registro em outra tabela.
+
+    A sintaxe para o uso seria
+
+        SELECT * INTO newtable [IN externaldb] FROM oldtable WHERE condition;
+
+    O formato acima seleciona toda a coluna.
+
+    Agora, selecionando determinadas colunas
+
+        SELECT column1, column2, column3, ... INTO newtable [IN externaldb] FROM oldtable WHERE condition;
+
+    Uma nova tabela será criado caso a tabela, na qual vc queira enviar os dados não exista. Ou se existir, simplesmente será inputado.
+
+    Nesse processo, vc pode usar o AS para criar uma nova coluna e dentro dela colocar os dados que vc queira colocar.
 
 Claro, a lista acima são as mais usuais. Porém, existem outras que se encaixam dentro dessa categoria de declarações. São elas:
 
@@ -201,3 +273,33 @@ Lista de DQL:
     A sua estrutura sintática é 
 
         SELECT "column_name" FROM "table_name";    
+
+    ou 
+
+        SELECT Column_Name_1, Column_Name_2, ....., Column_Name_N FROM Table_Name;
+
+    Bom, claro, os Column_Name_1, Column_Name_2, ..., Column_Name_N, os os nomes das colunas da tabela que vc queira consultar.
+
+    Bom, seria o uso básico acima. Mas, vale ressaltar que temos outras formas de combinações do uso de SELECT com outras sintaxes.
+
+    Se vc quiser que seja exibido todas as colunas de uma tabela vc usa o "*"
+
+        SELECT * FROM table_name; 
+
+    Uso do SELECT com o WHERE. No caso, o WHERE aqui ele funciona para filtrar certos tipos de elementos que existem dentro da coluna
+
+        SELECT * FROM Name_of_Table WHERE [condition]; 
+
+    Lembrando que o WHERE ele não é uma sintaxe dependente do SELECT.
+
+    Uso do SELECT com GROUP BY. O GROUP BY, aqui ele é usado com o SELECT para mostrar dados comuns de uma coluna da tabela. No caso, a sintaxe aqui é o seguinte
+
+        SELECT column_Name_1, column_Name_2, ....., column_Name_N aggregate_function_name(column_Name2) FROM table_name GROUP BY column_Name1;
+
+    Uso do SELECT com o HAVING. O HAVING cria uma seleção naqueles grupos na qual são definidos pelo GROUP BY. A sua sintaxe seria o seguinte
+
+        SELECT column_Name_1, column_Name_2, ....., column_Name_N aggregate_function_name(column_Name_2) FROM table_name GROUP BY column_Name1 HAVING ;  
+
+    Uso do SELECT com o ORDER BY. O ORDER BY ele é uma sintaxe dependente do SELECT e serve para mostrar registros ou linhas de forma ordenada. Basicamente, a forma de ordenação está em ascendente e descendente. A sua sintaxe é o seguinte
+
+        SELECT Column_Name_1, Column_Name_2, ....., column_Name_N FROM table_name WHERE [Condition] ORDER BY[column_Name_1, column_Name_2, ....., column_Name_N asc | desc ];
