@@ -129,6 +129,14 @@ Os comandos mais usados dessa categoria de declarações são:
 
     Nesse processo, vc pode usar o AS para criar uma nova coluna e dentro dela colocar os dados que vc queira colocar.
 
+    Podemos usar a sintaxe IN para copiar uma tabela dentro de uma nova tabela
+
+        SELECT * INTO CustomersBackup2017 IN 'Backup.mdb' FROM Customers;
+
+    Seguir o link de leitura
+
+        https://www.w3schools.com/sql/sql_select_into.asp
+
 Claro, a lista acima são as mais usuais. Porém, existem outras que se encaixam dentro dessa categoria de declarações. São elas:
 
 - EXPLAIN PLAN select_command - Determina um plano de execução em uma requisição/A requisição para qual você determina um plano de execução.
@@ -170,8 +178,70 @@ DDL é um conjunto de comandos SQL usados ​​para criar, modificar e excluir 
 Lista de comandos DDL: 
 
 - CREATE : Este comando é usado para criar o banco de dados ou seus objetos (como tabela, índice, função, visualizações, procedimento de armazenamento e gatilhos).
+    
+    Para a criação do banco de dados
+
+    - O banco de dados que queremos criar deve ser simples e com único nome, na qual pode ser facilmente identificado.
+
+    - O nome de um banco de dados deve ter não mais de 128 caracteres.
+    
+    A sintaxe certa para isso seria o seguinte
+
+        CREATE DATABASE Database_Name;
+
+    OBS: Não há necessidade de criar banco de dados no sistema Oracle. No banco de dados da Oracle, podemos diretamente criar a tabela de banco de dados.
+
+    Seguir o link de leitura
+
+        https://www.javatpoint.com/sql-create-database
+
+    Bom, no caso da Oracle, usamos, basicamente, CREATE TABLE, visto a condição acima. Para isso a sintaxe para isso seria o seguinte
+
+        create table "tablename"
+        ("column1" "data type",
+        "column2" "data type",
+        "column3" "data type",
+        ...
+        "columnN" "data type");
+    
+    OBS: O tipo de dado das colunas poderia variar de uma base de dados para outra. Por exemplo, NUMBER é suportado no banco de dados Oracle para valores inteiros, equanto que para MySQL é suportado INT.
+
+    Podemos, também, criar uma tabela com base da outra tabela, realizando uma cópia dela. A nova tabela obterá as mesmas colunas como na tabela antiga. Nesse processo de cópia podemos selecionar todas as colunas ou apenas selecionar algumas. A sintaxe para isso é o seguinte
+
+        CREATE TABLE table_name AS
+        SELECT column1, column2,...
+        FROM old_table_name WHERE ..... ; 
+
+    The following SQL creates a copy of the employee table.
+
+        CREATE TABLE EmployeeCopy AS
+        SELECT EmployeeID, FirstName, Email
+        FROM Employee;
+
+    Seguir o link de leitura
+
+        https://www.javatpoint.com/sql-create-table
+
+    Temos o uso no CREATE para sequências tbm. Basicamente, o SEQUENCE em SQL é usado para criar uma sequência de objetos e suas propriedades pode ser, também, especificados. A sintaxe para isso seria o seguinte
+
+        CREATE SEQUENCE [name_of_schema.] name_of_sequence
+        [ AS type_as_integer ]
+        [ START WITH starting_value_of_sequence ]    
+        [ INCREMENT BY incremental_index ]    
+        [ { MINVALUE [ minimum_value ] } | { NO MINVALUE } ]    
+        [ { MAXVALUE [ maximum_value ] } | { NO MAXVALUE } ]    
+        [ CYCLE | { NO CYCLE } ]    
+        [ { CACHE [ size_of_cache ] } | { NO CACHE } ];
 
 - DROP : Este comando é usado para deletar objetos do banco de dados.
+
+    Seguir os links de leitura
+
+        https://www.w3schools.com/sql/sql_ref_drop.asp
+        https://www.javatpoint.com/sql-drop-database
+        https://www.javatpoint.com/sql-drop-table
+
+    
 
 - ALTER : usado para alterar a estrutura do banco de dados.
 
