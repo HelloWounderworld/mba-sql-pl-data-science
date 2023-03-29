@@ -240,7 +240,6 @@ Lista de comandos DDL:
     - Type_as_integer: O tipo de dados type_as_integer do objeto Sequence. Alguns dos tipos de dados com suporte para objetos Sequence são NUMERIC, BIGINT, INT, TINYINT, DECIMAL e SMALLINT.
 
     Podemos qualquer um deles de acordo com nossa exigência:
-
         - bigint - Varia de -9.223.372.036.854.775.808 a 9.223.372.036.854.775.807
 
         - int - Varia de -2.147.483.648 a 2.147.483.647
