@@ -233,6 +233,38 @@ Lista de comandos DDL:
         [ CYCLE | { NO CYCLE } ]    
         [ { CACHE [ size_of_cache ] } | { NO CACHE } ];
 
+    Na sintaxe escrito acimma tem, basciamente, os seguintes significados
+
+    - Name_of_schema: O name_of_schema especifica o esquema ao qual essa sequência pertencerá.
+
+    - Type_as_integer: O tipo de dados type_as_integer do objeto Sequence. Alguns dos tipos de dados com suporte para objetos Sequence são NUMERIC, BIGINT, INT, TINYINT, DECIMAL e SMALLINT.
+
+    Podemos qualquer um deles de acordo com nossa exigência:
+
+        - bigint - Varia de -9.223.372.036.854.775.808 a 9.223.372.036.854.775.807
+
+        - int - Varia de -2.147.483.648 a 2.147.483.647
+
+        - decimal e numérico com uma escala de 0
+
+        - smallint - Varia de -32.768 a 32.767
+
+        - tinyint - Varia de 0 a 255
+
+    - Starting_value_of_sequence: O Starting_value_of_sequence representa o valor inicial da sequência. O objeto de sequência é inicializado com este valor e incrementação ou decrementação adicional é feita neste valor.
+
+    - Incremental_index: O incremental_index representa o valor ou índice pelo qual o valor inicial da sequência será incrementado cada vez que o próximo valor do objeto de sequência for buscado.
+
+    - Minimum_value: O Minimum_value representa o valor mínimo que um objeto de sequência pode atingir. Funciona como um limite inferior.
+
+    - Maximum_value: O maximum_value representa o valor máximo que um objeto de sequência pode atingir. Funciona como um limite superior.
+
+    - Size_of_cache: O size_of_cache representa o número de valores a serem armazenados em cache para melhorar o desempenho do objeto de sequência.
+
+    Seguir o link de leitura
+
+        https://www.javatpoint.com/sql-server-sequence
+
 - DROP : Este comando é usado para deletar objetos do banco de dados.
 
     Seguir os links de leitura
