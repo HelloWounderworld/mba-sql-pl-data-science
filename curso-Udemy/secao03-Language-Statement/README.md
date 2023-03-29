@@ -240,16 +240,16 @@ Lista de comandos DDL:
     - Type_as_integer: O tipo de dados type_as_integer do objeto Sequence. Alguns dos tipos de dados com suporte para objetos Sequence são NUMERIC, BIGINT, INT, TINYINT, DECIMAL e SMALLINT.
 
     Podemos qualquer um deles de acordo com nossa exigência:
-    
-    - bigint - Varia de -9.223.372.036.854.775.808 a 9.223.372.036.854.775.807
 
-    - int - Varia de -2.147.483.648 a 2.147.483.647
+        - bigint - Varia de -9.223.372.036.854.775.808 a 9.223.372.036.854.775.807
 
-    - decimal e numérico com uma escala de 0
+        - int - Varia de -2.147.483.648 a 2.147.483.647
 
-    - smallint - Varia de -32.768 a 32.767
+        - decimal e numérico com uma escala de 0
 
-    - tinyint - Varia de 0 a 255
+        - smallint - Varia de -32.768 a 32.767
+
+        - tinyint - Varia de 0 a 255
 
     - Starting_value_of_sequence: O Starting_value_of_sequence representa o valor inicial da sequência. O objeto de sequência é inicializado com este valor e incrementação ou decrementação adicional é feita neste valor.
 
@@ -265,6 +265,20 @@ Lista de comandos DDL:
 
         https://www.javatpoint.com/sql-server-sequence
 
+    Podemos, também, usar o CREATE para criar as views. As views não ocupam espaço em banco de dados e elas não são apagadas mesmo após a SQL server for desligada. Bom, podemos entender que a view ela é uma espécie de tabela virtual composta por linhas e colunas de dados vindos de tabelas relacionadas em uma query.
+
+    As linhas e colunas na view são geradas dinamicamente no momento em que é feita uma referência a ela. A sintaxe para a criação da views é o seguinte
+
+        CREATE VIEW view_name AS
+        SELECT column1, column2, ...
+        FROM table_name
+        WHERE condition;
+
+    Seguir o link de leitura
+
+        https://www.devmedia.com.br/conceitos-e-criacao-de-views-no-sql-server/22390
+        https://www.w3schools.com/sql/sql_view.asp
+
 - DROP : Este comando é usado para deletar objetos do banco de dados.
 
     Seguir os links de leitura
@@ -273,11 +287,61 @@ Lista de comandos DDL:
         https://www.javatpoint.com/sql-drop-database
         https://www.javatpoint.com/sql-drop-table
 
-    
+    Basicamente, vc pode entender o DROP como uma espécie de remoção.
 
-- ALTER : usado para alterar a estrutura do banco de dados.
+    Bom, daí, imagino que venha uma pergunta bem natural que é "Qual a diferença entre o DROP e o DELETE, então?", a mesma pergunta vale para TRUNCATE com DROP e DELETE com TRUNCATE. Bom, seguir o link de leitura
+
+        https://stackoverflow.com/questions/1143915/what-is-the-difference-between-drop-table-and-delete-table-in-sql-server
+        https://unstop.com/blog/difference-between-delete-drop-and-truncate-in-sql
+        https://www.javatpoint.com/drop-vs-truncate-in-sql
+
+    Irei colocar as situações de usos mais frequentes de drop.
+
+    Para excluir tabelas usando o DROP a sintaxe correta seguir como o seguinte
+
+        DROP TABLE "table_name"; 
+
+    O DROP serve para excluir banco de dados tbm. A sua sintaxe para a tal finalidade é o seguinte
+
+        DROP DATABASE Database_Name;
+
+    O DROP é utilizado até para remover as views. A sintaxe para a tal finalidade é o seguinte
+
+        DROP VIEW View_Name;
+
+    Seguir o link para leitura
+
+        https://www.javatpoint.com/sql-drop-database
+        https://www.javatpoint.com/sql-drop-table
+        https://www.w3schools.com/sql/sql_ref_drop.asp
+
+- ALTER : usado para alterar a estrutura do banco de dados ou de uma tabela.
+
+    Para a tabela a sua sintaxe correta é o seguinte
+
+        ALTER TABLE table_name ADD column_name column-definition; 
+
+    Para a coluna é o seguinte
+
+        ALTER TABLE table_name ALTER COLUMN column_name column-definition;
+
+    No caso, com o ALTER TABLE, podemos alterar, add, remover as colunas de uma tabela.
+
+    Seguir o link de leitura
+
+        https://www.javatpoint.com/sql-alter-table
+        https://www.w3schools.com/sql/sql_ref_alter.asp
 
 - TRUNCATE : É usado para remover todos os registros de uma tabela, inclusive todos os espaços alocados para que os registros sejam removidos.
+
+    A sintaxe para usar o TRUNCATE é o seguinte
+
+        TRUNCATE TABLE table_name;  
+
+    Seguir o link de leitura
+
+        https://www.javatpoint.com/sql-truncate-table
+        https://www.w3schools.com/sql/sql_ref_truncate_table.asp
 
 - COMENTÁRIO : usado para adicionar comentários ao dicionário de dados.
 
@@ -311,21 +375,51 @@ Lista de comandos DCL:
 
 - REVOKE: Este comando retira os privilégios de acesso do usuário concedidos usando o comando GRANT.
 
+Seguir o link de leitura
+
+    https://beginner-sql-tutorial.com/sql-grant-revoke-privileges-roles.htm
+
 ### GRANT
 Para o uso de teste vamos usar o arquivo 3_dcl_grant.sql usando a conexão Ora XE.
 
 Basicamente, o Grant serve para permitir que duas conexões se comuniquem.
+
+A sintaxe para o uso do grant seria o seguinte
+
+    GRANT privilege_name
+    ON object_name
+    TO {user_name |PUBLIC |role_name}
+    [WITH GRANT OPTION];
+
+- privilege_name: é o direito de acesso ou privilégio concedido ao usuário. Alguns dos direitos de acesso são ALL, EXECUTE e SELECT.
+
+- object_name: é o nome de um objeto de banco de dados como TABLE, VIEW, STORED PROC e SEQUENCE.
+
+- user_name: é o nome do usuário a quem um direito de acesso está sendo concedido.
+
+- PUBLIC: é usado para conceder direitos de acesso a todos os usuários.
+
+- ROLES: são um conjunto de privilégios agrupados.
+
+- WITH GRANT OPTION: permite que um usuário conceda direitos de acesso a outros usuários.
 
 ### REVOKE
 Para o uso de teste vamos usar o arquivo 4_dcl_revoke_aula.sql.
 
 Ao contrário do grant, o Revoke, serve para sessar a comunicação com duas conexões.
 
+A sintaxe para o uso do revoke seria o seguinte
+
+    REVOKE privilege_name
+    ON object_name
+    FROM {user_name |PUBLIC |role_name}
+
 ## Aula 07 - TCL:
 Seguir o link de leitura
 
     https://byjus.com/gate/tcl-full-form/#:~:text=What%20Is%20The%20Full%20Form,commands%20for%20maintaining%20its%20transactions.
     https://www.geeksforgeeks.org/difference-between-grant-and-revoke/
+    https://pt.stackoverflow.com/questions/203669/o-que-s%C3%A3o-as-transa%C3%A7%C3%B5es-begin-commit-e-rollback
 
 ### Definição TCL - Linguagem de Controle de Transação
 As transações agrupam um conjunto de tarefas em uma única unidade de execução. Cada transação começa com uma tarefa específica e termina quando todas as tarefas do grupo são concluídas com sucesso. Se alguma das tarefas falhar, a transação falhará. Portanto, uma transação tem apenas dois resultados: sucesso ou falha.
@@ -334,7 +428,15 @@ Os seguintes comandos TCL são usados ​​para controlar a execução de uma t
 
 - BEGIN: Abre uma Transação.
 
+    Seguir o link de leitura
+
+        https://www.sqlservertutorial.net/sql-server-stored-procedures/sql-server-begin-end/
+
 - COMMIT : Confirma uma transação.
+
+    Seguir o link de leitura
+
+        https://www.javatpoint.com/commit-and-rollback-in-sql
 
 Este comando é usado para salvar os dados permanentemente. 
 

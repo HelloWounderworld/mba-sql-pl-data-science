@@ -123,7 +123,7 @@ DROP VIEW v_funcionario;
 
 
 -- Excluindo index
-DROP index ix_func1;
+DROP index ix_func1;x
 
 
 -- CRIANDO INDEX
