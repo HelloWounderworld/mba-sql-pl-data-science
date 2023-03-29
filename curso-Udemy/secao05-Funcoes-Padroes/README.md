@@ -9,6 +9,8 @@ Seguir o link de leitura
     http://www.bosontreinamentos.com.br/mysql/mysql-funcoes-de-agregacao-max-min-avg-count-sum-18/
     https://www.alura.com.br/artigos/trabalhando-funcoes-de-agregacao
 
+Uma função de agregação processa um conjunto de valores contidos em uma única coluna de uma tabela e retorna um único valor como resultado. Sua sintaxe é semelhante aquela encontrada em muitas linguagens de programação. Contudo, o parâmetro informado é sempre a coluna cujos valores desejamos processar.
+
 O arquivo para testar isso é agregacao.sql.
 
 ## Aula 04 e 05 - FUNÇÃO CARACTERES PARTE 1 e 2:
