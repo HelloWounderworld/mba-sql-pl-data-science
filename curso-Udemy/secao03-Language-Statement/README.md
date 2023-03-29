@@ -240,15 +240,16 @@ Lista de comandos DDL:
     - Type_as_integer: O tipo de dados type_as_integer do objeto Sequence. Alguns dos tipos de dados com suporte para objetos Sequence são NUMERIC, BIGINT, INT, TINYINT, DECIMAL e SMALLINT.
 
     Podemos qualquer um deles de acordo com nossa exigência:
-        - bigint - Varia de -9.223.372.036.854.775.808 a 9.223.372.036.854.775.807
+    
+    - bigint - Varia de -9.223.372.036.854.775.808 a 9.223.372.036.854.775.807
 
-        - int - Varia de -2.147.483.648 a 2.147.483.647
+    - int - Varia de -2.147.483.648 a 2.147.483.647
 
-        - decimal e numérico com uma escala de 0
+    - decimal e numérico com uma escala de 0
 
-        - smallint - Varia de -32.768 a 32.767
+    - smallint - Varia de -32.768 a 32.767
 
-        - tinyint - Varia de 0 a 255
+    - tinyint - Varia de 0 a 255
 
     - Starting_value_of_sequence: O Starting_value_of_sequence representa o valor inicial da sequência. O objeto de sequência é inicializado com este valor e incrementação ou decrementação adicional é feita neste valor.
 
