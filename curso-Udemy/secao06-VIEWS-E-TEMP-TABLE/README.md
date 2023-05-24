@@ -14,8 +14,6 @@ O arquivo para realizar testes de conceito é views.sql.
 ## Aula 02 - TEMP TABLE:
 Seguir o link de leitura
 
-    https://www.scaler.com/topics/temporary-table-in-sql/
-    https://datatofish.com/temporary-table-sql-server/#:~:text=Create%20a%20Global%20Temporary%20Table%20in%20SQL%20Server,be%20available%20across%20different%20connections.&text=3%20records%20will%20be%20inserted%20into%20the%20table.
-    https://www.tutorialspoint.com/sql/sql-temporary-tables.htm#:~:text=Temporary%20Tables%20are%20a%20great,cases%20to%20keep%20temporary%20data.
+    https://www.javatpoint.com/sql-server-temp-table
 
 O arquivo para realizar testes de conceito é temporaria.sql.

@@ -11,6 +11,12 @@ Seguir o link de leitura
     https://blog.betrybe.com/linguagem-de-programacao/pl-sql-tudo-sobre/
     https://pt.stackoverflow.com/questions/480913/qual-a-diferen%C3%A7a-entre-sql-server-mysql-e-outros-sql#:~:text=SQL%20%C3%A9%20uma%20linguagem%20de,o%20banco%20de%20dados%20ORACLE.
 
+Basicamente, PL/SQL ele é uma linguagem estruturada em blocos que pode conter vários blocos. Bom, possui em sua estrutura as intruções como condicionais, loops, arrays, strings, exceções, coleções, registros, gatilhos, funções, procedimentos, cursores, etc...
+
+PL/SQL é uma linguagem estruturada em blocos. Os programas de PL/SQL são blocos lógicos que podem conter qualquer número de sub-blocos aninhados. Pl/SQL significa "Procedural Language extension of SQL" que é usado no Oracle. O PL/SQL é integrado ao banco de dados Oracle (desde a versão 7). As funcionalidades do PL/SQL geralmente se estendem após cada lançamento do banco de dados Oracle. Embora o PL/SQL esteja estreitamente integrado à linguagem SQL, ele adiciona algumas restrições de programação que não estão disponíveis no SQL.
+
+Ou seja, pensa que na linguagem de consulta foi adquirido um suporte de mais funcionalidades ao ponto de conseguirmos codar a linguagem PL/SQL como se fosse JavaScript, tendo quase todas as estruturas de algoritmo em JS, podemos usar em PL/SQL.
+
 ## Aula 02 - CONJUNTO DE CARACTERS:
 Conjuntos de caracteres
 
