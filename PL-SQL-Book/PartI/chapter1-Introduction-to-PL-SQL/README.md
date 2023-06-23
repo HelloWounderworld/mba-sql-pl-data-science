@@ -296,3 +296,91 @@ Existem também muitos recursos online para programadores PL/SQL. Esta lista se 
     www.plsqlchallenge.com
 
     O PL/SQL Challenge é um site que promove "aprendizado ativo" - em vez de ler passivamente um livro ou uma página da web, você faz testes sobre PL/SQL, SQL, lógica, Design de Banco de Dados e Oracle Application Express, testando assim o seu conhecimento.
+
+- PL/SQL Channel:
+
+    http://www6.plsqlchannel.com/
+
+    O PL/SQL Channel oferece uma biblioteca com mais de 27 horas de treinamento em vídeo sobre a linguagem Oracle PL/SQL, todos gravados por Steven Feuerstein.
+
+- Oracle Technology Network:
+
+    https://www.oracle.com/technical-resources/
+
+    O Quest Error Manager (QEM) é uma estrutura que o ajudará a padronizar o gerenciamento de erros em um aplicativo baseado em PL/SQL. Com o QEM, você pode registrar, levantar e relatar erros por meio de uma API que facilita para todos os desenvolvedores realizar o gerenciamento de erros da mesma maneira, com o mínimo de esforço. As informações de erro são registradas nas tabelas de instância (informações gerais sobre o erro) e contexto (pares de nome/valor específicos do aplicativo).
+
+- oracle-developer.net:
+
+    Mantido por Adrian Billington (que escreveu a seção no Capítulo 21 sobre funções de tabela com pipelines), este site é um recurso para desenvolvedores de banco de dados Oracle, que contém uma excelente coleção de artigos, tutoriais e utilitários. Adrian oferece tratamentos detalhados de novos recursos em cada versão do Oracle Database, repletos de exemplos, scripts de análise de desempenho e muito mais.
+
+- ORACLE-BASE:
+
+    https://oracle-base.com/
+
+    ORACLE-BASE é outro recurso fantástico para os tecnólogos Oracle, construído e mantido por um único especialista em Oracle: Tim Hall. Tim é um Oracle ACE Director, membro da rede OakTable e foi escolhido como Oracle ACE do Ano de 2006 pelo Oracle Magazine Editor's Choice Awards. Ele está envolvido em trabalhos de DBA, design e desenvolvimento com bancos de dados Oracle desde 1994. Veja em http://oracle-base.com.
+
+## Algumas dicas:
+Desde 1995, quando a primeira edição deste livro foi publicada, tive a oportunidade de treinar, auxiliar e trabalhar com dezenas de milhares de desenvolvedores PL/SQL. No processo, aprendi muito e também adquiri algumas percepções sobre a forma como todos nós realizamos nosso trabalho no mundo do PL/SQL. Espero que você não ache cansativo se eu compartilhar alguns conselhos sobre como você pode trabalhar de forma mais eficaz com essa poderosa linguagem de programação.
+
+### Não tenha tanta pressa!
+Quase sempre estamos trabalhando com prazos apertados ou correndo atrás de um contratempo ou outro. Não temos tempo a perder e muito código para escrever. Então, vamos direto ao assunto, certo?
+
+Errado. Se mergulharmos rapidamente nas profundezas da construção de código, convertendo servilmente os requisitos em centenas, milhares ou até dezenas de milhares de linhas de código, acabaremos com uma bagunça total que é quase impossível de depurar e manter. Não responda aos prazos iminentes com pânico; você tem mais chances de cumprir esses prazos se fizer um planejamento cuidadoso.
+
+Eu recomendo fortemente que você resista a essas pressões de tempo e garanta o seguinte antes de iniciar um novo aplicativo, ou até mesmo um programa específico em um aplicativo:
+
+- Elabore casos de teste e scripts de teste antes de escrever seu código:
+
+    Você deve determinar como deseja verificar uma implementação bem-sucedida antes de escrever uma única linha de código. Se você fizer isso, é mais provável que acerte a interface de seus programas, pois isso o ajudará a identificar completamente o que seu programa precisa fazer.
+
+- Estabeleça regras claras sobre como os desenvolvedores escreverão as instruções SQL no aplicativo:
+
+    Em geral, eu recomendo que os desenvolvedores individuais não escrevam uma grande quantidade de SQL. Em vez disso, essas consultas de uma única linha e inserções e atualizações devem ser "ocultas" por trás de procedimentos e funções pré-construídas e totalmente testadas (isso é chamado de encapsulamento de dados). Esses programas podem ser otimizados, testados e mantidos de forma muito mais eficaz do que as instruções SQL (muitas delas redundantes) espalhadas por todo o código.
+
+- Estabeleça regras claras sobre como os desenvolvedores lidarão com exceções na aplicação:
+
+    Todos os desenvolvedores de uma equipe devem levantar, tratar e registrar erros da mesma forma. A melhor maneira de fazer isso é criar um único pacote de tratamento de erros que oculte todos os detalhes de como um registro de erros é mantido, determine como as exceções são levantadas e propagadas através de blocos aninhados e evite a codificação rígida de exceções específicas da aplicação. Certifique-se de que todos os desenvolvedores usem esse pacote e que não escrevam seu próprio código complicado, demorado e propenso a erros para tratamento de erros.
+
+- Utilize o design top-down (também conhecido como refinamento passo a passo) para limitar a complexidade dos requisitos com os quais você deve lidar em determinado momento:
+
+    Se você seguir essa abordagem, você perceberá que as seções executáveis dos seus módulos serão mais curtas e mais fáceis de entender, o que torna seu código mais fácil de manter e aprimorar ao longo do tempo. O uso de módulos locais ou aninhados desempenha um papel fundamental ao seguir esse princípio de design.
+
+Essas são apenas algumas das coisas importantes a se ter em mente antes de começar a escrever todo esse código. Apenas lembre-se: no mundo do desenvolvimento de software, a pressa não apenas leva a desperdício, mas também garante uma generosa oferta de bugs e fins de semana perdidos.
+
+### Não tenha medo de pedir ajuda!
+Se você é um profissional de software, é provável que seja uma pessoa bastante inteligente. Você estudou muito, aprimorou suas habilidades e agora ganha muito bem escrevendo código. Você consegue resolver quase qualquer problema que lhe é apresentado, e isso te enche de orgulho. Infelizmente, seu sucesso também pode torná-lo egoísta, arrogante e relutante em buscar ajuda quando está confuso. Essa dinâmica é um dos aspectos mais perigosos e destrutivos do desenvolvimento de software.
+
+O software é escrito por seres humanos; portanto, é importante reconhecer que a psicologia humana desempenha um papel fundamental no desenvolvimento de software. A seguir, apresentamos um exemplo.
+
+Joe, o desenvolvedor sênior em uma equipe de seis pessoas, está com um problema em seu programa. Ele estuda o código por horas, cada vez mais frustrado, mas não consegue identificar a origem do bug. Ele jamais pensaria em pedir ajuda a seus colegas, pois acredita que todos têm menos experiência do que ele. No entanto, quando Joe finalmente fica sem saída, ele "desiste". Suspirando, ele pega o telefone e liga para um ramal: "Sandra, você poderia vir aqui e dar uma olhada no meu programa? Tenho um problema que simplesmente não consigo resolver." Sandra aparece e, com um rápido olhar para o programa de Joe, aponta o que deveria ter sido óbvio para ele há muito tempo. Hurra! O programa é consertado e Joe expressa gratidão, mas na verdade ele está secretamente envergonhado.
+
+Pensamentos como "Por que eu não percebi isso?" e "Se eu tivesse passado mais cinco minutos fazendo meu próprio debug, teria encontrado o problema" passam pela mente de Joe. Isso é compreensível, mas também muito teimoso. A questão é que muitas vezes não somos capazes de identificar nossos próprios problemas porque estamos muito próximos do nosso próprio código. Às vezes, tudo o que precisamos é de uma nova perspectiva, a visão relativamente objetiva de alguém que não tem nada em jogo. Isso não tem nada a ver com senioridade, expertise ou competência.
+
+Sugerimos fortemente que você estabeleça as seguintes diretrizes em sua organização:
+
+- Recompense as admissões de ignorância:
+
+    Esconder o que você não sabe sobre um aplicativo ou seu código é muito perigoso. Desenvolva uma cultura que valorize perguntas e solicitações de ajuda.
+
+- Peça ajuda:
+
+    Se você não conseguir identificar a origem de um bug em 30 minutos, peça imediatamente por ajuda. Você até pode estabelecer um sistema de "companheiros", onde cada pessoa é designada para ser procurada em caso de necessidade. Não permita que você mesmo (ou outros no seu grupo) passe horas batendo a cabeça em busca de respostas sem sucesso.
+
+- Estabeleça um processo formal de revisão de código entre pares:
+
+    Não permita que nenhum código seja enviado para QA ou produção sem ser lido e criticado (de maneira positiva e construtiva) por um ou mais desenvolvedores do seu grupo.
+
+### Adote uma abordagem criativa, até mesmo radical:
+Todos nós tendemos a cair em rotinas, em quase todos os aspectos de nossas vidas. As pessoas são criaturas de hábito: você aprende a escrever código de uma maneira; você assume certas limitações sobre um produto; você descarta soluções possíveis sem um exame sério porque você simplesmente sabe que não pode ser feito. Os desenvolvedores ficam totalmente preconceituosos em relação aos próprios programas e muitas vezes não de maneira positiva. Eles frequentemente são ouvidos dizendo coisas como:
+
+- "Não pode rodar mais rápido do que isso; é um porco."
+
+- "Não consigo fazê-lo funcionar do jeito que o usuário quer; isso terá que esperar pela próxima versão."
+
+- "Se eu estivesse usando o produto X, Y ou Z, seria fácil. Mas com essas coisas, tudo é uma luta."
+
+Mas a realidade é que seu programa quase sempre pode rodar um pouco mais rápido. E a tela, de fato, pode funcionar exatamente como o usuário deseja. E embora cada produto tenha suas limitações, pontos fortes e fraquezas, você nunca deveria ter que esperar pela próxima versão. Não é muito mais satisfatório poder dizer ao seu terapeuta que você enfrentou o problema de frente, não aceitou desculpas e criou uma solução?
+
+Como fazer isso? Saia dos limites das suas visões fixas e dê uma nova olhada no mundo (ou talvez apenas na sua estação de trabalho). Reavalie os hábitos de programação que você desenvolveu. Seja criativo - afaste-se dos métodos tradicionais, das abordagens muitas vezes limitadas e mecânicas constantemente reforçadas em nossos ambientes de trabalho.
+
+Experimente algo novo: faça experiências com o que possa parecer uma abordagem radicalmente diferente do normal. Você ficará surpreso com o quanto aprenderá e crescerá como programador e solucionador de problemas. Ao longo dos anos, tenho me surpreendido repetidamente com o que realmente é possível quando eu paro de dizer "Você não pode fazer isso!" e, em vez disso, apenas assinto silenciosamente e murmuro: "Agora, se eu fizer dessa maneira..."
