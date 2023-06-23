@@ -220,3 +220,203 @@ e você obterá resultados idênticos. De qualquer forma, esse comando faz com q
 - Tente executar sequencialmente todas as declarações SQL, PL/SQL e SQL*Plus no arquivo.
 
 - Ao concluir, feche o arquivo e retorne ao prompt do SQLPlus (a menos que o arquivo invoque a instrução EXIT, o que fará com que o SQLPlus seja encerrado).
+
+Por exemplo:
+
+    SQL> @abc.pkg
+
+    Package created.
+
+    Package body created.
+
+    SQL>
+
+O comportamento padrão é exibir apenas a saída das declarações individuais na tela; se você deseja ver o código-fonte original do arquivo, use o comando SQL*Plus SET ECHO ON.
+
+No meu exemplo, usei uma extensão de arquivo .pkg. Se eu omitir a extensão, isso é o que acontece:
+
+    SQL> @abc
+    SP2-0310: unable to open file "abc.sql"
+
+Como você pode ver, a extensão de arquivo padrão é sql. A propósito, o "SP2-0310" é o número de erro fornecido pela Oracle, e "SP2" significa que é exclusivo do SQLPlus. (Para obter mais detalhes sobre mensagens de erro do SQLPlus, consulte o Guia do Usuário e Referência do SQL*Plus da Oracle.)
+
+### Qual é o atual diretório?
+Sempre que você iniciar o SQLPlus a partir de um prompt de comando do sistema operacional, o SQLPlus considerará o diretório atual do sistema operacional como seu próprio diretório atual. Em outras palavras, se eu iniciar o SQL*Plus usando:
+
+    C:\BOB\FILES> sqlplus
+
+então todas as operações de arquivo dentro do SQL*Plus (como abrir ou executar um script) seriam padrão para o diretório C:\BOB\FILES.
+
+Se você usar um atalho ou uma opção de menu para iniciar o SQLPlus, o diretório atual será o diretório associado ao mecanismo de inicialização pelo sistema operacional. Então, como você alteraria o diretório atual uma vez dentro do SQLPlus? Isso depende da versão. No programa de console, você não pode fazê-lo. Você precisa sair, alterar os diretórios no sistema operacional e reiniciar o SQL*Plus. Na versão GUI, no entanto, concluir um comando de menu Arquivo->Abrir ou Arquivo->Salvar terá o efeito colateral de alterar o diretório atual.
+
+Se o arquivo de script estiver em outro diretório, você pode preceder o nome do arquivo com o caminho:
+
+    SQL> @/files/src/release/1.0/abc.pkg
+
+A ideia de executar scripts em outros diretórios levanta uma questão interessante. E se abc.pkg estiver localizado neste outro diretório e, por sua vez, chamar outros scripts? Ele poderia conter as linhas:
+
+    REM  Filename: abc.pkg
+    @abc.pks
+    @abc.pkb
+
+(Qualquer linha que comece com REM é um comentário ou "observação" que o SQLPlus ignora.) A execução do script abc.pkg deve executar abc.pks e abc.pkb. Mas como não incluí informações de caminho, onde o SQLPlus irá procurar por esses outros arquivos? Vamos ver:
+
+    C:\BOB\FILES> sqlplus
+    ...
+    SQL> @/files/src/release/1.0/abc.pkg
+    SP2-0310: unable to open file "abc.pks"
+    SP2-0310: unable to open file "abc.pkb"
+
+O SQL*Plus procura apenas no diretório em que foi iniciado.
+
+Para resolver esse problema, a Oracle criou o comando @@. Esses dois sinais de arroba significam que, durante essa chamada, "faça de conta que eu mudei o diretório atual para ser o do arquivo atualmente em execução". Portanto, a maneira preferida de escrever as chamadas no script abc.pkg é:
+
+    REM  Filename: abc.pkg
+    @@abc.pks
+    @@abc.pkb
+
+Agora eu obtenho:
+
+    C:\BOB\FILES> sqlplus
+    ...
+    SQL> @/files/src/release/1.0/abc.pkg
+
+    Package created.
+
+    Package body created.
+
+...como eu estava esperando.
+
+### Outras tarefas de SQL*PLUS:
+Existem dezenas de comandos específicos do SQLPlus, mas tenho espaço para mencionar apenas mais alguns que são particularmente importantes ou confusos. Para um tratamento completo deste venerável produto, obtenha uma cópia do livro Oracle SQLPlus: The Definitive Guide, de Jonathan Gennick, ou, para referência rápida, seu Oracle SQL*Plus Pocket Reference.
+
+#### Configure suas preferências
+Você pode alterar o comportamento do SQLPlus, assim como pode fazer com muitos ambientes de linha de comando, alterando o valor de algumas de suas variáveis e configurações integradas. Você já viu um exemplo disso, com o comando SET SERVEROUTPUT. Existem muitas variações do comando SET do SQLPlus, como SET SUFFIX (altera a extensão de arquivo padrão) e SET LINESIZE n (define o número máximo de caracteres em cada linha exibida antes de quebrar). Para ver todos os valores SET aplicáveis à sua sessão atual, use o comando:
+
+    SQL> SHOW ALL
+
+O SQLPlus também pode criar e manipular suas próprias variáveis em memória, e ele reserva algumas variáveis especiais que afetarão seu comportamento. Na verdade, existem dois tipos diferentes de variáveis no SQLPlus: DEFINE e bind variables. Para atribuir um valor a uma variável DEFINE, você pode usar o comando DEFINE:
+
+    SQL> DEFINE x = "the answer is 42"
+
+Para visualizar o valor de x, especifique:
+
+    SQL> DEFINE x
+    DEFINE X = "the answer is 42" (CHAR)
+
+Você se referiria a essa variável usando um ampersand (&). O SQL*Plus faz uma substituição simples antes de enviar a declaração para o banco de dados Oracle, então você precisará usar aspas simples em torno da variável quando quiser usá-la como uma string literal:
+
+    SELECT '&x' FROM DUAL;
+
+Para variáveis de associação (bind variables), você primeiro declara a variável. Em seguida, você pode usá-la em PL/SQL e exibi-la usando o comando PRINT do SQL*Plus:
+
+    SQL> VARIABLE x VARCHAR2(10)
+    SQL> BEGIN
+        2     :x := 'hullo';
+        3  END;
+        4  /
+
+    PL/SQL procedure successfully completed.
+
+    SQL> PRINT :x
+
+    X
+    --------------------------------
+    hullo
+
+Isso pode ficar um pouco confuso, porque agora existem duas variáveis "x" diferentes, uma que foi definida e outra que foi declarada:
+
+    SQL> SELECT :x, '&x' FROM DUAL;
+    old   1: SELECT :x, '&x' FROM DUAL
+    new   1: SELECT :x, 'the answer is 42' FROM DUAL
+
+    :X                               'THEANSWERIS42'
+    -------------------------------- ----------------
+    hullo                            the answer is 42
+
+Lembre-se de que as DEFINEs são sempre cadeias de caracteres expandidas pelo SQL*Plus, enquanto as variáveis declaradas são usadas como verdadeiras variáveis de ligação (bind variables) em SQL e PL/SQL.
+
+#### Salvando um output à um arquivo
+Com frequência, você vai querer salvar a saída de uma sessão do SQLPlus em um arquivo - talvez porque esteja gerando um relatório, porque deseja ter um registro de suas ações ou porque está gerando comandos dinamicamente para executar posteriormente. Uma maneira fácil de fazer isso no SQLPlus é usar o comando SPOOL:
+
+    SQL> SPOOL report
+    SQL> @run_report
+
+        ...output scrolls past and gets written to the file report.lst...
+
+    SQL> SPOOL OFF
+
+O primeiro comando, SPOOL report, indica ao SQL*Plus para salvar tudo a partir desse ponto no arquivo report.lst. A extensão do arquivo .lst é a padrão, mas você pode substituí-la fornecendo sua própria extensão no comando SPOOL:
+
+    SQL> SPOOL report.txt
+
+SPOOL OFF informa ao SQL*Plus para parar de salvar a saída e fechar o arquivo.
+
+#### Saindo do SQL*PLUS
+Para sair do SQL*Plus e retornar ao sistema operacional, utilize o comando EXIT:
+
+    SQL> EXIT
+
+Se você estiver gravando o log (spooling) quando sair, o SQL*Plus interromperá a gravação e fechará o arquivo de log (spool file).
+
+O que acontece se você modificar alguns dados da tabela durante a sessão, mas sair antes de encerrar a transação com uma instrução explícita de controle de transação? Por padrão, sair do SQLPlus força um COMMIT, a menos que sua sessão termine com um erro SQL e você tenha emitido o comando SQLPlus WHENEVER SQLERROR EXIT ROLLBACK (consulte a seção "Tratamento de erros no SQL*Plus" na página 36).
+
+Para desconectar do banco de dados, mas permanecer conectado ao SQL*Plus, use o comando DISCONNECT, que ficará assim na prática:
+
+    SQL> DISCONNECT
+    Disconnected from Personal Oracle Database 10g Release 10.1.0.3.0 - Production
+    With the Partitioning, OLAP and Data Mining options
+    SQL>
+
+Você não precisa usar o DISCONNECT para trocar de conexões - você pode simplesmente emitir um CONNECT e o SQL*Plus irá encerrar a primeira conexão antes de conectar-se à nova. No entanto, há uma boa razão pela qual você pode querer desconectar antes de se reconectar: se você estiver usando autenticação do sistema operacional, o script pode se reconectar automaticamente... talvez para a conta errada. Já vi isso acontecer.
+
+#### Editando uma declaração
+O SQL*Plus mantém a declaração mais recentemente emitida em um buffer, e você pode editar essa declaração usando o editor de linha incorporado ou um editor externo de sua escolha. Para começar, vou mostrar como configurar e usar um editor externo.
+
+Use o comando EDIT para fazer com que o SQLPlus salve o buffer de comando atual em um arquivo, pause temporariamente o SQLPlus e invoque o editor:
+
+    SQL> EDIT
+
+Por padrão, o arquivo será salvo com o nome "afiedt.buf", mas você pode alterar isso com o comando SET EDITFILE. Ou, se você deseja editar um arquivo existente, basta fornecer o nome como argumento para o comando EDIT:
+
+    SQL> EDIT abc.pkg
+
+Depois de salvar o arquivo e sair do editor, a sessão do SQL*Plus lerá o conteúdo do arquivo recém-editado em seu buffer e, em seguida, continuará.
+
+Os editores externos padrão que o Oracle assume são:
+
+- ed para Unix, Linux e sistemas relacionados
+
+- Notepad para variantes do Microsoft Windows
+
+Embora a seleção dos editores padrão esteja codificada no arquivo executável sqlplus, você pode facilmente alterar o editor atual atribuindo seu próprio valor à variável _EDITOR do SQL*Plus. Aqui está um exemplo que eu uso com frequência:
+
+    SQL> DEFINE _EDITOR = /bin/vi
+
+onde /bin/vi é o caminho completo para um editor popular entre alguns estranhos. Recomendo usar o caminho completo do editor aqui, por motivos de segurança.
+
+Se você realmente deseja usar o editor de linha incorporado do SQL*Plus (e pode ser muito útil), os comandos essenciais que você precisa conhecer são:
+
+- L
+
+    Lista as declarações mais recentes
+
+- n
+
+    Cria n linhas de declaração nas linhas atuais.
+
+- DEL
+
+    Deleta a linha atual.
+
+- C/old/new/
+
+    Na linha atual, altera a primeira ocorrência de "antigo" para "novo". O delimitador (neste caso, uma barra para frente) pode ser qualquer caractere arbitrário.
+
+- n text
+
+    Define o texto como o texto atual da linha n.
+
+- I
+
+    Insere uma linha abaixo da linha atual. Para inserir uma nova linha antes da linha 1, use um comando de linha zero (por exemplo, 0 texto).
