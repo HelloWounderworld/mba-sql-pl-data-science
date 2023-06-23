@@ -154,3 +154,90 @@ Vamos dar uma olhada mais detalhada neste código na tabela a seguir.
     Este é o cabeçalho de um procedimento que paga o saldo de uma conta para cobrir contas pendentes. A linha 2 é a lista de parâmetros do procedimento, neste caso consistindo de um único valor de entrada (o número de identificação da conta).
 
 - Linha 3-4:
+
+    Esta é a seção de declaração do procedimento. Observe que, em vez de usar a palavra-chave DECLARE, como no exemplo anterior, eu uso a palavra-chave IS (ou AS) para separar o cabeçalho das declarações.
+
+- Linha 6-15:
+
+    Aqui está um exemplo de um loop simples. Este loop depende de uma instrução EXIT (veja a linha 11) para encerrar o loop; loops FOR e WHILE especificam a condição de término de forma diferente.
+
+- Linha 7:
+
+    Aqui, eu faço a chamada para a função account_balance para obter o saldo desta conta. Isso é um exemplo de chamada a um programa reutilizável dentro de outro programa reutilizável. A linha 13 demonstra a chamada de outra procedure dentro desta procedure.
+
+- Linha 9-14:
+
+    Aqui está um IF statement que pode ser interpretado da seguinte forma: se o saldo da conta cair abaixo de $1.000, pare de alocar fundos para cobrir contas. Caso contrário, aplique o saldo ao próximo pagamento.
+
+## Quando as coisas dão errado:
+A linguagem PL/SQL oferece um mecanismo poderoso tanto para gerar quanto para tratar erros. No procedimento a seguir, obtenho o nome e o saldo de uma conta com base em seu ID. Em seguida, verifico se o saldo está muito baixo. Se estiver, eu gero explicitamente uma exceção, o que interrompe a continuação do programa:
+
+    1  PROCEDURE check_account (
+    2     account_id_in IN accounts.id%TYPE)
+    3  IS
+    4     l_balance_remaining       NUMBER;
+    5     l_balance_below_minimum   EXCEPTION;
+    6     l_account_name            accounts.name%TYPE;
+    7  BEGIN
+    8     SELECT name
+    9       INTO l_account_name
+    10       FROM accounts
+    11      WHERE id = account_id_in;
+    12
+    13     l_balance_remaining := account_balance (account_id_in);
+    14
+    15     DBMS_OUTPUT.PUT_LINE (
+    16        'Balance for ' || l_account_name ||
+    17         ' = ' || l_balance_remaining);
+    18
+    19     IF l_balance_remaining < 1000
+    20     THEN
+    21        RAISE l_balance_below_minimum;
+    22     END IF;
+    23
+    24  EXCEPTION
+    25     WHEN NO_DATA_FOUND
+    26     THEN
+    27        -- No account found for this ID
+    28        log_error (...);
+    29        RAISE;
+    30     WHEN l_balance_below_minimum
+    31     THEN
+    32        log_error (...);
+    33        RAISE VALUE_ERROR;
+    34  END;
+
+Vamos dar uma olhada mais detalhada nos aspectos de tratamento de erros deste código na tabela a seguir.
+
+- Linha 5:
+
+    Eu declaro minha própria exceção, chamada l_balance_below_minimum. A Oracle fornece um conjunto de exceções pré-definidas, como DUP_VAL_ON_INDEX, mas eu preciso de algo específico para minha aplicação, então devo defini-lo eu mesmo neste caso.
+
+- Linha 8-11:
+
+    Esta consulta recupera o nome da conta. Se não houver nenhuma conta para este ID, o banco de dados levanta a exceção pré-definida NO_DATA_FOUND, fazendo com que o programa pare.
+
+- Linha 19-22:
+
+    Se o saldo estiver muito baixo, eu levanto explicitamente minha própria exceção porque encontrei um problema grave com esta conta.
+
+- Linha 24:
+
+    A palavra-chave EXCEPTION indica o fim da seção executável e o início da seção de exceção, na qual os erros são tratados.
+
+- Linha 25-28:
+
+    Esta é a seção de tratamento de erro para a situação em que a conta não é encontrada. Se a exceção NO_DATA_FOUND foi levantada, ela é capturada aqui e o erro é registrado com o procedimento log_error. Em seguida, eu levanto novamente a mesma exceção, para que o bloco externo saiba que não houve correspondência para aquele ID de conta.
+
+- Linha 30-33:
+
+    Esta é a seção de tratamento de erro para a situação em que o saldo da conta ficou muito baixo (minha exceção específica do aplicativo). Se l_balance_below_minimum for levantada, ela é capturada aqui e o erro é registrado. Em seguida, eu levanto a exceção VALUE_ERROR, definida pelo sistema, para notificar o bloco externo do problema.
+
+Há, é claro, muito mais a ser dito sobre o PL/SQL - é por isso que você tem centenas de páginas adicionais de material para estudar neste livro! Esses exemplos iniciais, no entanto, devem dar uma ideia do tipo de código que você escreverá com o PL/SQL, alguns dos seus elementos sintáticos mais importantes e a facilidade com que se pode escrever - e ler - o código PL/SQL.
+
+## Sobre as versões PL/SQL:
+Cada versão do banco de dados Oracle vem com sua própria versão correspondente do PL/SQL. À medida que você utiliza versões mais atualizadas do PL/SQL, uma ampla gama de funcionalidades estará disponível para você. Um dos maiores desafios como programadores PL/SQL é simplesmente manter-se atualizado. Precisamos constantemente nos educar sobre as novas funcionalidades em cada versão - descobrindo como usá-las e aplicá-las em nossas aplicações, e determinando quais novas técnicas são tão úteis que devemos modificar as aplicações existentes para aproveitá-las ao máximo.
+
+Tabela 1-1: resumem os principais elementos de cada uma das versões (passadas e presentes) do PL/SQL no banco de dados. (Observação: nas primeiras versões do banco de dados, os números de versão do PL/SQL eram diferentes dos números de versão do banco de dados, mas desde o Oracle8 Database, eles têm sido idênticos.) A tabela oferece uma visão geral das novas funcionalidades disponíveis em cada versão. Após a tabela, você encontrará descrições mais detalhadas do "que há de novo" no PL/SQL na versão mais recente do Oracle, Oracle Database 12c.
+
+Analise a Tabela do livro que estou seguindo na página 11.
