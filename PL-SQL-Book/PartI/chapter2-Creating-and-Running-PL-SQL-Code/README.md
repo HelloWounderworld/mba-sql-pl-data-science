@@ -722,3 +722,18 @@ Remover um sinônimo é fácil:
     DROP SYNONYM wordcount;
 
 ### Removendo um programa armazenado.
+Se você realmente não precisa mais de um determinado programa armazenado, você pode removê-lo usando o comando DROP do SQL:
+
+    DROP FUNCTION wordcount;
+
+Você pode excluir um pacote, que pode ser composto por até dois elementos (uma especificação e um corpo), na sua totalidade:
+
+    DROP PACKAGE pkgname;
+
+Ou você pode excluir apenas o corpo sem invalidar a respectiva especificação:
+
+    DROP PACKAGE BODY pkgname;
+
+Sempre que você exclui um programa que é chamado por outros programas, os chamadores são marcados como INVÁLIDOS.
+
+### Ocultando o código-fonte de um programa armazenado.
