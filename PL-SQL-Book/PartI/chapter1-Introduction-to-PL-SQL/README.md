@@ -241,3 +241,58 @@ Cada versão do banco de dados Oracle vem com sua própria versão correspondent
 Tabela 1-1: resumem os principais elementos de cada uma das versões (passadas e presentes) do PL/SQL no banco de dados. (Observação: nas primeiras versões do banco de dados, os números de versão do PL/SQL eram diferentes dos números de versão do banco de dados, mas desde o Oracle8 Database, eles têm sido idênticos.) A tabela oferece uma visão geral das novas funcionalidades disponíveis em cada versão. Após a tabela, você encontrará descrições mais detalhadas do "que há de novo" no PL/SQL na versão mais recente do Oracle, Oracle Database 12c.
 
 Analise a Tabela do livro que estou seguindo na página 11.
+
+## Recursos para Desenvolvedores PL/SQL:
+A primeira edição deste livro foi publicada pela O'Reilly em 1995. Naquela época, "Oracle PL/SQL Programming" causou um grande impacto. Foi o primeiro livro independente (ou seja, não proveniente da Oracle) sobre PL/SQL, e atendeu a uma necessidade clara e intensamente sentida pelos desenvolvedores ao redor do mundo. Desde então, recursos como livros, ambientes de desenvolvimento, utilitários e sites para programadores PL/SQL têm proliferado. (É claro que este livro ainda é de longe o mais importante e valioso desses recursos!)
+
+As seguintes seções descrevem de forma muito breve muitos desses recursos. Ao aproveitar ao máximo esses recursos, muitos dos quais estão disponíveis gratuitamente ou a um custo relativamente baixo, você melhorará significativamente sua experiência de desenvolvimento (e o código resultante).
+
+### A Série PL/SQL da O'Reilly:
+Ao longo dos anos, a série PL/SQL da Oracle da O'Reilly tem crescido e incluído uma longa lista de livros. Aqui, resumimos os livros atualmente disponíveis. Por favor, visite a área Oracle do site da O'Reilly para obter informações mais completas.
+
+- Oracle PL/SQL Programming, by Steven Feuerstein with Bill Pribyl:
+
+    O volume de 1.300 páginas que você está lendo agora. O companheiro de mesa de muitos programadores profissionais de PL/SQL, este livro foi projetado para abranger todos os recursos da linguagem PL/SQL. A versão atual abrange até o Oracle Database 11g Release 2.
+
+- Learning Oracle PL/SQL, by Bill Pribyl with Steven Feuerstein:
+
+    Uma introdução comparativamente suave à linguagem, ideal para novos programadores e aqueles que conhecem uma linguagem diferente de PL/SQL.
+
+- Oracle Pl/SQL Best Practice, by Steven Feuerstein:
+
+    Um livro relativamente curto que descreve dezenas de melhores práticas que o ajudarão a produzir código PL/SQL de alta qualidade. Ter este livro é como ter um documento de "lições aprendidas" escrito por um especialista interno em PL/SQL. A segunda edição apresenta um conteúdo completamente reescrito que ensina as melhores práticas seguindo os desafios de uma equipe de desenvolvimento que escreve código para a fictícia empresa My Flimsy Excuse.
+
+- Oracle PL/SQL Developer's Workbook, by Steven Feuerstein with Andrew Odewahn:
+
+    Contém uma série de perguntas e respostas destinadas a ajudar programadores PL/SQL a desenvolver e testar seu entendimento da linguagem. Este livro abrange recursos PL/SQL até o Oracle8i Database, mas é claro que a maioria desses exercícios também se aplica a versões posteriores do banco de dados.
+
+- Oracle Built-in Packages, by Steven Feuerstein, Charles Dye, and John Beresniewicz:
+
+    Um guia de referência para os pacotes predefinidos que a Oracle fornece com o servidor de banco de dados principal. O uso desses pacotes muitas vezes pode simplificar o difícil e domar o impossível. Este livro abrange recursos até o Oracle8 Database, mas as explicações detalhadas e os exemplos dos pacotes incluídos ainda são muito úteis nas versões posteriores.
+
+- Oracle PL/SQL for DBAs, by Arup Nanda and Steven Feuerstein:
+
+    A linguagem PL/SQL se torna cada vez mais importante para os DBAs da Oracle a cada nova versão do banco de dados. Existem duas razões principais para isso. Primeiro, grandes quantidades de funcionalidades do DBA são disponibilizadas por meio de uma API de pacotes PL/SQL. Para usar essa funcionalidade, você também precisa escrever e executar programas PL/SQL. Segundo, é fundamental que os DBAs tenham conhecimento prático de PL/SQL para que possam identificar problemas no código criado pelos desenvolvedores. Este livro oferece uma abundância de material que ajudará os DBAs a se familiarizarem rapidamente, para que possam aproveitar ao máximo o PL/SQL e concluir suas tarefas.
+
+- Oracle PL/SQL Language Pocket Reference, by Steven Feuerstein, Bill Pribyl, and Chip Dawes:
+
+    Um livro de referência rápida pequeno, mas muito útil, que pode caber no seu bolso do casaco. Ele resume a sintaxe da linguagem PL/SQL básica até o Oracle Database 11g.
+
+- Oracle PL/SQL Built-ins Pocket Reference, y Steven Feuerstein, John Beresniewicz, and Chip Dawes:
+
+    Outro guia útil e conciso que resume as funções e pacotes incorporados até o Oracle8 Database.
+
+### PL/SQL na internet:
+Existem também muitos recursos online para programadores PL/SQL. Esta lista se concentra principalmente nos recursos para os quais os coautores fornecem ou gerenciam o conteúdo.
+
+- Steven Feuerstein’s PL/SQL Obsession:
+
+    https://www.toadworld.com/
+
+    PL/SQL Obsession é o portal online de Steven para recursos de PL/SQL, incluindo todas as suas apresentações de treinamento e código de suporte, utilitários gratuitos (alguns listados aqui), gravações em vídeo e muito mais.
+
+- PL/SQL Challenge:
+
+    www.plsqlchallenge.com
+
+    O PL/SQL Challenge é um site que promove "aprendizado ativo" - em vez de ler passivamente um livro ou uma página da web, você faz testes sobre PL/SQL, SQL, lógica, Design de Banco de Dados e Oracle Application Express, testando assim o seu conhecimento.
