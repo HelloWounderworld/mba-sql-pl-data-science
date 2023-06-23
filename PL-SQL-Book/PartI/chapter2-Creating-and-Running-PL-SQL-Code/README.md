@@ -214,3 +214,9 @@ Se você preferir palavras em vez de arrobas, pode usar o comando equivalente ST
     SQL> START abc.pkg
 
 e você obterá resultados idênticos. De qualquer forma, esse comando faz com que o SQL*Plus execute as seguintes ações:
+
+- Abra o arquivo chamado abc.pkg.
+
+- Tente executar sequencialmente todas as declarações SQL, PL/SQL e SQL*Plus no arquivo.
+
+- Ao concluir, feche o arquivo e retorne ao prompt do SQLPlus (a menos que o arquivo invoque a instrução EXIT, o que fará com que o SQLPlus seja encerrado).
