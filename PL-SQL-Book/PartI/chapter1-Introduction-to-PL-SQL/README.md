@@ -5,4 +5,9 @@ PL/SQL significa "Procedural Language extensions to the Structured Query Languag
 A linguagem PL/SQL da Oracle possui várias características distintivas:
 
 - É uma linguagem altamente estruturada, legível e acessível:
+
     Se você é novo na programação, o PL/SQL é um ótimo lugar para começar. Você descobrirá que é uma linguagem fácil de aprender e rica em palavras-chave e estrutura que expressam claramente a intenção do seu código. Se você possui experiência em outras linguagens de programação, se adaptará facilmente à nova sintaxe.
+
+- É uma linguagem padrão e portátil para o desenvolvimento Oracle:
+
+    Se você escrever um procedimento ou função PL/SQL para ser executado no banco de dados Oracle em seu laptop, poderá mover esse mesmo procedimento para um banco de dados na rede corporativa e executá-lo lá sem nenhuma alteração (supondo a compatibilidade das versões do Oracle, é claro!). "Escreva uma vez, execute em qualquer lugar" foi o lema do PL/SQL muito antes do surgimento do Java. No entanto, para o PL/SQL, "em qualquer lugar" significa "em qualquer lugar onde haja um banco de dados Oracle".
