@@ -737,3 +737,299 @@ Ou você pode excluir apenas o corpo sem invalidar a respectiva especificação:
 Sempre que você exclui um programa que é chamado por outros programas, os chamadores são marcados como INVÁLIDOS.
 
 ### Ocultando o código-fonte de um programa armazenado.
+Quando você cria um programa PL/SQL conforme descrito anteriormente, o código-fonte estará disponível em texto claro no dicionário de dados, e qualquer DBA pode visualizá-lo ou até mesmo modificá-lo. Para proteger segredos comerciais ou evitar a adulteração do seu código, você pode querer alguma forma de ofuscar o seu código-fonte PL/SQL antes de entregá-lo.
+
+O Oracle fornece um utilitário de linha de comando chamado "wrap" que converte muitas declarações CREATE em uma combinação de texto comum e hexadecimal. Não é uma verdadeira criptografia, mas vai longe para ocultar seu código. Aqui estão algumas partes extraídas de um arquivo ocultado:
+
+    FUNCTION wordcount wrapped
+    0
+    abcd
+    abcd ...snip...
+    1WORDS:
+    10:
+    1LEN:
+    1NVL:
+    1LENGTH:
+    1INSIDE_A_WORD:
+    1BOOLEAN: ...snip...
+    a5 b 81 b0 a3 a0 1c 81
+    b0 91 51 a0 7e 51 a0 b4
+    2e 63 37 :4 a0 51 a5 b a5
+    b 7e 51 b4 2e :2 a0 7e b4
+    2e 52 10 :3 a0 7e 51 b4 2e
+    d :2 a0 d b7 19 3c b7 :2 a0
+    d b7 :2 19 3c b7 a0 47 :2 a0
+
+Se você precisa de uma criptografia real - por exemplo, para fornecer informações como uma senha que realmente precisa ser segura - não deve depender dessa funcionalidade.
+
+Obs: O Oracle oferece uma maneira de incorporar criptografia real em seus próprios aplicativos usando o pacote embutido DBMS_CRYPTO (ou DBMS_OBFUSCATION_TOOLKIT) em versões anteriores ao Oracle Database 10g; consulte o Capítulo 23 para obter informações sobre o DBMS_CRYPTO.
+
+Para obter mais informações sobre o utilitário "wrap", consulte o Capítulo 20.
+
+## Ambientes de Edição para PL/SQL
+Como mencionei anteriormente, você pode usar um ambiente de edição e execução "de menor denominador comum" como o SQL*Plus, ou pode utilizar um ambiente de desenvolvimento integrado (IDE) que oferece interfaces gráficas abrangentes para melhorar sua produtividade. Esta seção lista algumas das ferramentas IDE mais populares. Não recomendo nenhuma ferramenta específica; você deve definir cuidadosamente sua lista de requisitos e prioridades para tal ferramenta e depois verificar qual delas atende melhor às suas necessidades.
+
+- Toad: Oferecido pela Quest Software, o Toad é, de longe, a IDE PL/SQL mais popular. Suas versões gratuita e comercial são usadas por centenas de milhares de desenvolvedores.
+
+- SQL Navigator: Também oferecido pela Quest Software, o SQL Navigator é usado por dezenas de milhares de desenvolvedores que adoram a interface e os recursos de produtividade do produto.
+
+- PL/SQL Developer: O PL/SQL Developer, vendido pela Allround Automations, é o favorito de muitos desenvolvedores PL/SQL. Ele é construído em torno de uma arquitetura de plug-in, para que terceiros possam oferecer extensões ao produto base.
+
+- SQL Developer: Após anos de pouco ou nenhum suporte para edição PL/SQL, a Oracle Corporation criou o SQL Developer como um "fork" da ferramenta base JDeveloper. O SQL Developer é gratuito e cada vez mais robusto.
+
+Existem muitas outras IDEs PL/SQL disponíveis, mas as mencionadas são algumas das melhores e mais populares.
+
+## Chamando PL/SQL de Outras Linguagens
+Mais cedo ou mais tarde, você provavelmente desejará chamar PL/SQL a partir de C, Java, Perl, PHP ou de qualquer outro lugar. Isso parece um pedido razoável, mas se você já trabalhou com integração de linguagens antes, pode estar familiarizado com algumas das complexidades de combinar tipos de dados específicos de cada linguagem - especialmente tipos de dados compostos, como arrays, registros e objetos - além das diferenças na semântica de parâmetros ou extensões de fornecedor para interfaces de programação de aplicativos "padrão", como a Conectividade de Banco de Dados Aberta (ODBC) da Microsoft.
+
+Vou mostrar alguns exemplos muito breves de como chamar PL/SQL do mundo externo. Digamos que eu tenha escrito uma função PL/SQL que recebe um ISBN expresso como uma string e retorna o título do livro correspondente:
+
+    /* File on web: booktitle.fun */
+    FUNCTION booktitle (isbn_in IN VARCHAR2)
+        RETURN VARCHAR2
+    IS
+        l_title books.title%TYPE;
+        CURSOR icur IS SELECT title FROM books WHERE isbn = isbn_in;
+    BEGIN
+        OPEN icur;
+        FETCH icur INTO l_title;
+        CLOSE icur;
+        RETURN l_title;
+    END;
+
+No SQL*Plus, eu poderia chamá-lo de várias maneiras diferentes. A forma mais curta seria a seguinte:
+
+    SQL> EXEC DBMS_OUTPUT.PUT_LINE(booktitle('0-596-00180-0'))
+    Learning Oracle PL/SQL
+
+    PL/SQL procedure successfully completed.
+
+Em seguida, vou mostrar como eu poderia chamar essa função nos seguintes ambientes:
+
+- C, usando o pré-compilador da Oracle (Pro*C)
+
+- Java, usando JDBC
+
+- Perl, usando Perl DBI e DBD::Oracle
+
+- PHP
+
+- PL/SQL Server Pages
+
+Esses exemplos são muito artificiais - por exemplo, o nome de usuário e senha são codificados diretamente, e os programas simplesmente exibem a saída no stdout. Além disso, nem vou tentar descrever cada linha de código. No entanto, esses exemplos darão uma ideia dos padrões que você pode encontrar em diferentes linguagens.
+
+### C: usando o pré-compilador da Oracle (Pro*C)
+A Oracle fornece pelo menos duas interfaces em linguagem C para o Oracle: uma chamada OCI (Oracle Call Interface), que é em grande parte usada por especialistas, e outra chamada ProC. O OCI fornece centenas de funções das quais você deve codificar operações de baixo nível, como abrir, analisar, vincular, definir, executar, buscar... e isso é apenas para uma única consulta. Como o programa OCI mais simples que faz algo interessante tem cerca de 200 linhas de código, pensei em mostrar um exemplo usando o ProC. O Pro*C é uma tecnologia de pré-compilador que permite construir arquivos de origem contendo uma combinação de C, SQL e PL/SQL. Você executa o seguinte programa através do programa "proc" da Oracle, e será gerado código C:
+
+    /* File on web: callbooktitle.pc */
+    #include <stdio.h>
+    #include <string.h>
+    EXEC SQL BEGIN DECLARE SECTION;
+        VARCHAR uid[20];
+        VARCHAR pwd[20];
+        VARCHAR isbn[15];
+        VARCHAR btitle[400];
+    EXEC SQL END DECLARE SECTION;
+    EXEC SQL INCLUDE SQLCA.H;
+    int sqlerror();
+    int main()
+    {
+        /* VARCHARs actually become a struct of a char array and a length */
+        strcpy((char *)uid.arr,"scott");
+        uid.len = (short) strlen((char *)uid.arr);
+        strcpy((char *)pwd.arr,"tiger");
+        pwd.len = (short) strlen((char *)pwd.arr);
+        /* this is a cross between an exception and a goto */
+        EXEC SQL WHENEVER SQLERROR DO sqlerror();
+        /* connect and then execute the function */
+        EXEC SQL CONNECT :uid IDENTIFIED BY :pwd;
+        EXEC SQL EXECUTE
+        BEGIN
+            :btitle := booktitle('0-596-00180-0');
+        END;
+        END-EXEC;
+        /* show me the money */
+        printf("%s\n", btitle.arr);
+        /* disconnect from ORACLE */
+        EXEC SQL COMMIT WORK RELEASE;
+        exit(0);
+    }
+    sqlerror()
+    {
+        EXEC SQL WHENEVER SQLERROR CONTINUE;
+        printf("\n% .70s \n", sqlca.sqlerrm.sqlerrmc);
+        EXEC SQL ROLLBACK WORK RELEASE;
+        exit(1);
+    }
+
+Como você pode ver, o ProC não é uma abordagem pela qual os puristas da linguagem suspirarão. E acredite em mim, você não vai querer mexer no código C que isso gera. No entanto, muitas empresas descobrem que o ProC (ou Pro*Cobol, ou qualquer uma das várias outras linguagens que o Oracle suporta) serve como um ponto intermediário razoável entre, por exemplo, o Visual Basic (muito lento e desajeitado) e o OCI (muito difícil).
+
+A própria documentação da Oracle oferece a melhor fonte de informações sobre o Pro*C.
+
+### Java: usando JDBC
+Assim como no caso do C, a Oracle oferece várias abordagens diferentes para se conectar ao banco de dados. A abordagem de SQL embutido, conhecida como SQLJ, é semelhante à outra tecnologia de pré-compilador da Oracle, embora um pouco mais amigável ao depurador. Uma abordagem mais popular e centrada em Java é conhecida como JDBC (que na verdade não significa nada em particular), embora a interpretação usual seja "Java Database Connectivity" (Conectividade de Banco de Dados Java):
+
+    /* File on web: Book.java */
+    import java.sql.*;
+
+    public class Book
+    {
+        public static void main(String[] args) throws SQLException
+        {
+            // initialize the driver and try to make a connection
+
+            DriverManager.registerDriver (new oracle.jdbc.driver.OracleDriver ());
+            Connection conn =
+            DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:o92", "scott", "tiger");
+
+            // prepareCall uses ANSI92 "call" syntax
+            CallableStatement cstmt = conn.prepareCall("{? = call booktitle(?)}");
+
+            // get those bind variables and parameters set up
+            cstmt.registerOutParameter(1, Types.VARCHAR);
+            cstmt.setString(2, "0-596-00180-0");
+
+            // now we can do it, get it, close it, and print it
+            cstmt.executeUpdate();
+            String bookTitle = cstmt.getString(1);
+            conn.close();
+            System.out.println(bookTitle);
+        }
+    }
+
+Este exemplo em particular utiliza o driver thin, que oferece ótima compatibilidade e facilidade de instalação (todas as funcionalidades do protocolo de rede estão contidas em uma biblioteca Java), em detrimento do desempenho da comunicação. Uma abordagem alternativa seria usar o que é conhecido como driver OCI. Não se preocupe: não é necessário nenhum conhecimento avançado de programação para utilizá-lo, apesar do nome!
+
+### Perl: usando Perl DBI e DBD::Oracle
+Muito amado pela comunidade de administração de sistemas, Perl é um tanto quanto a mãe de todas as linguagens de código aberto. Agora na versão 5.10, ele faz praticamente tudo e parece rodar em qualquer lugar. E com ferramentas de autoconfiguração bacanas como o CPAN (Comprehensive Perl Archive Network), é fácil instalar módulos fornecidos pela comunidade, como a Interface de Banco de Dados (DBI) e o respectivo driver do Oracle, DBD::Oracle.
+
+    /* File on web: callbooktitle.pl */
+    #!/usr/bin/perl
+
+    use strict;
+    use DBI qw(:sql_types);
+
+    # either make the connection or die
+    my $dbh = DBI->connect(
+        'dbi:Oracle:o92',
+        'scott',
+        'tiger',
+        {
+            RaiseError => 1,
+            AutoCommit => 0
+        }
+    ) || die "Database connection not made: $DBI::errstr";
+
+    my $retval;
+
+    # make parse call to Oracle, get statement handle
+    eval {
+        my $func = $dbh->prepare(q{
+            BEGIN
+                :retval := booktitle(isbn_in => :bind1);
+            END;
+        });
+
+    # bind the parameters and execute
+        $func->bind_param(":bind1", "0-596-00180-0");
+        $func->bind_param_inout(":retval", \$retval, SQL_VARCHAR);
+        $func->execute;
+    };
+
+    if( $@ ) {
+        warn "Execution of stored procedure failed: $DBI::errstr\n";
+        $dbh->rollback;
+    } else {
+        print "Stored procedure returned: $retval\n";
+    }
+
+    # don't forget to disconnect
+    $dbh->disconnect;
+
+Perl é uma daquelas linguagens em que é vergonhosamente fácil escrever código que é impossível de ler. Não é uma linguagem especialmente rápida ou compacta, mas existem versões compiladas que pelo menos abordam o problema de velocidade.
+
+Para obter mais informações sobre Perl e Oracle, consulte "Programming the Perl DBI" de Alligator Descartes e Tim Bunce. Existem também muitos livros excelentes sobre a linguagem Perl, sem mencionar as informações online em perl.com (um site da O'Reilly), perl.org e cpan.org.
+
+### PHP: Usando Extensões Oracle
+Se você é do tipo de pessoa que pode usar o servidor web gratuito e extremamente popular conhecido como Apache, você também pode gostar de usar a linguagem de programação gratuita e extremamente popular conhecida como PHP. Comumente usada para criar páginas da web dinâmicas, o PHP também pode ser usado para construir aplicativos GUI ou executar programas de linha de comando. Como você pode imaginar, a Oracle é um dos muitos ambientes de banco de dados que funcionam com o PHP; de fato, a Oracle Corporation fez parceria com a Zend para fornecer uma distribuição "aprovada" do banco de dados Oracle com o PHP.
+
+Observação: Observe que se você deseja suporte para o PHP, precisará obtê-lo da comunidade de usuários ou de uma empresa como a Zend. A Oracle Corporation não atende chamadas de suporte para o PHP.
+
+Este exemplo usa a família de funções PHP conhecida como OCI8. Não deixe que o "8" no nome o engane - ele deve funcionar com tudo, desde o Oracle7 até o Oracle Database 11g.
+
+    /* File on web: callbooktitle.php */
+    <?PHP
+        // Initiate the connection to the o92 database
+        $conn = OCILogon ("scott", "tiger", "o92");
+
+        // Make parse call to Oracle, get statement identity
+        $stmt = OCIParse($conn, "begin :res := booktitle('0-596-00180-0'); end;");
+
+        // Show any errors
+        if (!$stmt) {
+            $err = OCIError();
+            echo "Oops, you broke it: ".$err["message"];
+            exit;
+        }
+
+        // Bind 200 characters of the variable $result to placeholder :res
+        OCIBindByName($stmt, "res", &$result, 200);
+
+        // Execute
+        OCIExecute($stmt);
+
+        // Stuff the value into the variable
+        OCIResult($stmt,$result);
+
+        // Display on stdout
+        echo "$result\n";
+
+        // Relax
+        OCILogoff($conn);
+    ?>
+
+Quando executado na linha de comando, parece algo assim:
+
+    $ php callbooktitle.php
+    Learning Oracle PL/SQL
+
+A propósito, essas funções Oracle OCI não estão disponíveis no PHP por padrão, mas não deve ser muito difícil para o administrador do sistema reconstruir o PHP com as extensões Oracle.
+
+Você pode encontrar mais informações sobre o PHP em php.net ou em um dos muitos livros da O'Reilly sobre o assunto. Para dicas específicas do PHP para Oracle, visite a Oracle Technology Network.
+
+### PL/SQL Server Pages
+Embora o ambiente de PL/SQL Server Pages (PSP) seja proprietário da Oracle, achei importante mencioná-lo porque é uma maneira rápida de criar uma página da web. O PSP é outra tecnologia de pré-compilador que permite incorporar PL/SQL em páginas HTML. A construção <%= %> aqui significa "processar isso como PL/SQL e retornar o resultado para a página":
+
+    /* File on web: favorite_plsql_book.psp */
+    <%@ page language="PL/SQL" %>
+    <%@ plsql procedure="favorite_plsql_book" %>
+    <HTML>
+        <HEAD>
+            <TITLE>My favorite book about PL/SQL</TITLE>
+        </HEAD>
+        <BODY>
+            <%= booktitle( '0-596-00180-0') %>
+        </BODY>
+    </HTML>
+
+Quando corretamente instalada em um servidor web conectado a um banco de dados Oracle, esta página é exibida como na Figura 2-3.
+
+Eu sou bastante apegado às PL/SQL Server Pages como uma boa maneira de criar rapidamente sites orientados a dados.
+
+Para obter mais informações sobre PL/SQL Server Pages, consulte o livro "Learning Oracle PL/SQL", que é escrito pelos autores do livro que você está lendo agora.
+
+### E em outros lugares?
+Você viu como usar o PL/SQL no SQL*Plus e em vários outros ambientes e linguagens de programação comuns. Ainda existem mais lugares e maneiras de usar o PL/SQL:
+
+- Incorporado em COBOL ou FORTRAN e processado com o pré-compilador da Oracle.
+
+- Chamado do Visual Basic, usando algum tipo de ODBC.
+
+- Chamado da linguagem de programação Ada, por meio de uma tecnologia chamada SQL*Module.
+
+- Executado automaticamente como triggers em eventos no banco de dados Oracle, como atualizações de tabelas.
+
+- Agendado para executar periodicamente dentro do banco de dados Oracle, por meio do pacote fornecido DBMS_SCHEDULER.
+
+- No banco de dados TimesTen, um banco de dados em memória adquirido pela Oracle Corporation, cujo conteúdo pode ser manipulado com código PL/SQL, assim como o banco de dados relacional.
+
+Infelizmente, não consigo abordar todos esses tópicos neste livro.
