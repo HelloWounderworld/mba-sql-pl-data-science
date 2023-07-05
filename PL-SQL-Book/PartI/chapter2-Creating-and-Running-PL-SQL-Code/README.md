@@ -1,5 +1,5 @@
 # Criando e Rondando Aplicações PL/SQL
-Mesmo que nunca dêem uma segunda pensada a tarefas como design de sistema ou testes unitários, todos os programadores PL/SQL devem estar familiarizados com algumas tarefas operacionais básicas:
+Mesmo que nunca dêem uma segunda pensada as tarefas como design de sistema ou testes unitários, todos os programadores PL/SQL devem estar familiarizados com algumas tarefas operacionais básicas:
 
 - Navegando no banco de dados
 
@@ -151,7 +151,7 @@ produz uma saída semelhante à mostrada na Figura 2-1.
 Então, aqui vamos nós (por favor, rufem os tambores). Vamos digitar um pequeno programa PL/SQL no SQL*Plus:
 
     SQL> BEGIN
-        2     DBMS_OUTPUT.PUT_LINE('Hey look, ma!');
+        2     DBMS_OUTPUT.PUT_LINE('Hey look, man!');
         3  END;
         4  /
 
@@ -238,7 +238,7 @@ No meu exemplo, usei uma extensão de arquivo .pkg. Se eu omitir a extensão, is
     SQL> @abc
     SP2-0310: unable to open file "abc.sql"
 
-Como você pode ver, a extensão de arquivo padrão é sql. A propósito, o "SP2-0310" é o número de erro fornecido pela Oracle, e "SP2" significa que é exclusivo do SQLPlus. (Para obter mais detalhes sobre mensagens de erro do SQLPlus, consulte o Guia do Usuário e Referência do SQL*Plus da Oracle.)
+Como você pode ver, a extensão de arquivo padrão é sql. A propósito, o "SP2-0310" é o número de erro fornecido pela Oracle, e "SP2" significa que é exclusivo do SQLPlus. (Para obter mais detalhes sobre mensagens de erro do SQLPlus, consulte o Guia do Usuário e Referência do SQL*Plus da Oracle.) (Parei aqui!)
 
 ### Qual é o atual diretório?
 Sempre que você iniciar o SQLPlus a partir de um prompt de comando do sistema operacional, o SQLPlus considerará o diretório atual do sistema operacional como seu próprio diretório atual. Em outras palavras, se eu iniciar o SQL*Plus usando:
