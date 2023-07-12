@@ -172,6 +172,14 @@ Ops. Embora tenha sido concluído com sucesso, esse programa específico deveria
 
     SQL>
 
+OBS: Na minha revisão de estudos aqui, em vez de usar o "SET SERVEROUTPUT ON" usei "SET SERVEROUT ON". No exemplo acima, ambas tiveram a mesma funcionalidade com as mesmas respostas. Porém, aí veio a pergunta que não quer calar. Qual a diferença entre "SET SERVEROUTPUT" e o "SET SERVEROUT"? A explicação para isso é o seguinte
+
+- SET SERVEROUT ON/OFF: Esta declaração é usada para controlar a exibição de mensagens geradas pelo comando DBMS_OUTPUT.PUT_LINE. Quando SET SERVEROUT ON é usado, as mensagens do DBMS_OUTPUT.PUT_LINE serão exibidas no ambiente em que o programa está sendo executado (por exemplo, SQL*Plus). Já quando SET SERVEROUT OFF é usado, as mensagens não serão exibidas. Por padrão, SET SERVEROUT OFF é definido.
+
+- SET SERVEROUTPUT ON/OFF: Esta declaração é usada para controlar a exibição de resultados de comandos SQL durante a execução de um programa PL/SQL. Quando SET SERVEROUTPUT ON é usado, os resultados dos comandos SQL serão exibidos no ambiente em que o programa está sendo executado. Quando SET SERVEROUTPUT OFF é usado, os resultados não serão exibidos. Por padrão, SET SERVEROUTPUT OFF é definido.
+
+Em resumo, "SET SERVEROUT ON/OFF" controla a exibição de mensagens geradas pelo "DBMS_OUTPUT.PUT_LINE", enquanto "SET SERVEROUTPUT ON/OFF" controla a exibição de resultados de comandos SQL.
+
 Normalmente, eu coloco o comando SERVEROUTPUT no meu arquivo de inicialização (consulte "Carregando seu próprio ambiente personalizado automaticamente na inicialização" na página 35), fazendo com que ele seja ativado até que uma das seguintes situações ocorra:
 
 - Você se desconecta, faz logoff ou encerra sua sessão.
@@ -184,7 +192,7 @@ Normalmente, eu coloco o comando SERVEROUTPUT no meu arquivo de inicialização 
 
 Quando você insere declarações SQL ou PL/SQL no SQL*Plus do console ou pseudo-GUI, o programa atribui um número a cada linha após a primeira. Existem dois benefícios para os números de linha: primeiro, eles ajudam você a designar qual linha editar com o editor de linha incorporado (que você pode usar algum dia); e segundo, se o banco de dados detectar um erro em seu código, geralmente ele reportará o erro acompanhado de um número de linha. Você terá muitas oportunidades para ver esse comportamento em ação.
 
-Para informar ao SQL*Plus que você terminou de inserir uma declaração PL/SQL, geralmente é necessário incluir uma barra invertida (/) no final (veja a linha 4 no exemplo anterior). Embora em sua maioria inofensiva, a barra invertida possui algumas características importantes:
+Para informar ao SQL*Plus que você terminou de inserir uma declaração PL/SQL, geralmente é necessário incluir uma barra invertida (/) no final (veja a linha 4 no exemplo anterior). Embora em sua maioria inofensiva, a barra invertida possui algumas características importantes: (Importante!)
 
 - O significado da barra invertida é "executar a declaração mais recentemente inserida", independentemente de a declaração ser SQL ou PL/SQL.
 
@@ -194,7 +202,7 @@ Para informar ao SQL*Plus que você terminou de inserir uma declaração PL/SQL,
 
 - Na maioria das versões do SQLPlus anteriores ao Oracle9i Database, se você acidentalmente preceder a barra invertida com espaços, ela não funcionará! A partir do Oracle9i Database, o SQLPlus convenientemente ignora os espaços iniciais. Os espaços finais não importam em nenhuma versão.
 
-Como recurso de conveniência, o SQL*Plus oferece aos usuários do PL/SQL um comando EXECUTE, que evita a digitação de BEGIN, END e da barra invertida. Portanto, o seguinte é equivalente ao pequeno programa que executei anteriormente:
+Como recurso de conveniência, o SQL*Plus oferece aos usuários do PL/SQL um comando EXECUTE, que evita a digitação de BEGIN, END e da barra invertida. Portanto, o seguinte é equivalente ao pequeno programa que executei anteriormente: (Importante!)
 
     SQL> EXECUTE DBMS_OUTPUT.PUT_LINE('Hey look, Ma!')
 
@@ -221,7 +229,7 @@ e você obterá resultados idênticos. De qualquer forma, esse comando faz com q
 
 - Ao concluir, feche o arquivo e retorne ao prompt do SQLPlus (a menos que o arquivo invoque a instrução EXIT, o que fará com que o SQLPlus seja encerrado).
 
-Por exemplo:
+Por exemplo: (Importante!)
 
     SQL> @abc.pkg
 
@@ -238,7 +246,7 @@ No meu exemplo, usei uma extensão de arquivo .pkg. Se eu omitir a extensão, is
     SQL> @abc
     SP2-0310: unable to open file "abc.sql"
 
-Como você pode ver, a extensão de arquivo padrão é sql. A propósito, o "SP2-0310" é o número de erro fornecido pela Oracle, e "SP2" significa que é exclusivo do SQLPlus. (Para obter mais detalhes sobre mensagens de erro do SQLPlus, consulte o Guia do Usuário e Referência do SQL*Plus da Oracle.) (Parei aqui!)
+Como você pode ver, a extensão de arquivo padrão é sql. A propósito, o "SP2-0310" é o número de erro fornecido pela Oracle, e "SP2" significa que é exclusivo do SQLPlus. (Para obter mais detalhes sobre mensagens de erro do SQLPlus, consulte o Guia do Usuário e Referência do SQL*Plus da Oracle.)
 
 ### Qual é o atual diretório?
 Sempre que você iniciar o SQLPlus a partir de um prompt de comando do sistema operacional, o SQLPlus considerará o diretório atual do sistema operacional como seu próprio diretório atual. Em outras palavras, se eu iniciar o SQL*Plus usando:
@@ -247,7 +255,7 @@ Sempre que você iniciar o SQLPlus a partir de um prompt de comando do sistema o
 
 então todas as operações de arquivo dentro do SQL*Plus (como abrir ou executar um script) seriam padrão para o diretório C:\BOB\FILES.
 
-Se você usar um atalho ou uma opção de menu para iniciar o SQLPlus, o diretório atual será o diretório associado ao mecanismo de inicialização pelo sistema operacional. Então, como você alteraria o diretório atual uma vez dentro do SQLPlus? Isso depende da versão. No programa de console, você não pode fazê-lo. Você precisa sair, alterar os diretórios no sistema operacional e reiniciar o SQL*Plus. Na versão GUI, no entanto, concluir um comando de menu Arquivo->Abrir ou Arquivo->Salvar terá o efeito colateral de alterar o diretório atual.
+Se você usar um atalho ou uma opção de menu para iniciar o SQLPlus, o diretório atual será o diretório associado ao mecanismo de inicialização pelo sistema operacional. Então, como você alteraria o diretório atual uma vez dentro do SQLPlus? Isso depende da versão. No programa de console, você não pode fazê-lo. Você precisa sair, alterar os diretórios no sistema operacional e reiniciar o SQL*Plus. Na versão GUI, no entanto, concluir um comando de menu Arquivo->Abrir ou Arquivo->Salvar terá o efeito colateral de alterar o diretório atual. (Parei aqui!)
 
 Se o arquivo de script estiver em outro diretório, você pode preceder o nome do arquivo com o caminho:
 

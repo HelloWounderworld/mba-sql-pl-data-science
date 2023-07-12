@@ -1,2 +1,2 @@
 SELECT sysdate
-FROM dual;
+FROM dual;  
