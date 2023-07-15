@@ -1,0 +1,12 @@
+REM Filename: abc.pkg
+SET SERVEROUTPUT ON
+DEFINE maninfold = "Hello Doctor!"
+DEFINE maninfold
+SELECT '&maninfold' FROM DUAL;
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Chamando os arquivos abc.pks e abc.pkb');
+    @@scripts-pl-sql/abc.pks;
+    @@scripts-pl-sql/abc.pkb;
+    @@scripts-pl-sql/variavel.pkg;
+END;
+/

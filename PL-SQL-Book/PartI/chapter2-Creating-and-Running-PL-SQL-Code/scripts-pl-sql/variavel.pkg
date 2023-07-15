@@ -1,0 +1,10 @@
+DECLARE
+    variavel VARCHAR2(100) := 'Hello, WounderWorld!!';
+    z VARCHAR2(100) := 'Hello darkness my old friend!';
+
+BEGIN
+    SELECT z INTO z FROM DUAL;
+    SELECT variavel INTO variavel FROM DUAL;
+    DBMS_OUTPUT.PUT_LINE(variavel);
+    DBMS_OUTPUT.PUT_LINE(z);
+END;

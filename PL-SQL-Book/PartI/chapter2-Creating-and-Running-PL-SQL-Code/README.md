@@ -255,13 +255,13 @@ Sempre que você iniciar o SQLPlus a partir de um prompt de comando do sistema o
 
 então todas as operações de arquivo dentro do SQL*Plus (como abrir ou executar um script) seriam padrão para o diretório C:\BOB\FILES.
 
-Se você usar um atalho ou uma opção de menu para iniciar o SQLPlus, o diretório atual será o diretório associado ao mecanismo de inicialização pelo sistema operacional. Então, como você alteraria o diretório atual uma vez dentro do SQLPlus? Isso depende da versão. No programa de console, você não pode fazê-lo. Você precisa sair, alterar os diretórios no sistema operacional e reiniciar o SQL*Plus. Na versão GUI, no entanto, concluir um comando de menu Arquivo->Abrir ou Arquivo->Salvar terá o efeito colateral de alterar o diretório atual. (Parei aqui!)
+Se você usar um atalho ou uma opção de menu para iniciar o SQLPlus, o diretório atual será o diretório associado ao mecanismo de inicialização pelo sistema operacional. Então, como você alteraria o diretório atual uma vez dentro do SQLPlus? Isso depende da versão. No programa de console, você não pode fazê-lo. Você precisa sair, alterar os diretórios no sistema operacional e reiniciar o SQL*Plus. Na versão GUI, no entanto, concluir um comando de menu Arquivo->Abrir ou Arquivo->Salvar terá o efeito colateral de alterar o diretório atual.
 
 Se o arquivo de script estiver em outro diretório, você pode preceder o nome do arquivo com o caminho:
 
-    SQL> @/files/src/release/1.0/abc.pkg
+    SQL> @files/src/release/1.0/abc.pkg
 
-A ideia de executar scripts em outros diretórios levanta uma questão interessante. E se abc.pkg estiver localizado neste outro diretório e, por sua vez, chamar outros scripts? Ele poderia conter as linhas:
+A ideia de executar scripts em outros diretórios levanta uma questão interessante. E se abc.pkg estiver localizado neste outro diretório e, por sua vez, chamar outros scripts? Ele poderia conter as linhas: (Importante!)
 
     REM  Filename: abc.pkg
     @abc.pks
@@ -287,7 +287,7 @@ Agora eu obtenho:
 
     C:\BOB\FILES> sqlplus
     ...
-    SQL> @/files/src/release/1.0/abc.pkg
+    SQL> @files/src/release/1.0/abc.pkg
 
     Package created.
 
@@ -299,7 +299,7 @@ Agora eu obtenho:
 Existem dezenas de comandos específicos do SQLPlus, mas tenho espaço para mencionar apenas mais alguns que são particularmente importantes ou confusos. Para um tratamento completo deste venerável produto, obtenha uma cópia do livro Oracle SQLPlus: The Definitive Guide, de Jonathan Gennick, ou, para referência rápida, seu Oracle SQL*Plus Pocket Reference.
 
 #### Configure suas preferências
-Você pode alterar o comportamento do SQLPlus, assim como pode fazer com muitos ambientes de linha de comando, alterando o valor de algumas de suas variáveis e configurações integradas. Você já viu um exemplo disso, com o comando SET SERVEROUTPUT. Existem muitas variações do comando SET do SQLPlus, como SET SUFFIX (altera a extensão de arquivo padrão) e SET LINESIZE n (define o número máximo de caracteres em cada linha exibida antes de quebrar). Para ver todos os valores SET aplicáveis à sua sessão atual, use o comando:
+Você pode alterar o comportamento do SQLPlus, assim como pode fazer com muitos ambientes de linha de comando, alterando o valor de algumas de suas variáveis e configurações integradas. Você já viu um exemplo disso, com o comando SET SERVEROUTPUT. Existem muitas variações do comando SET do SQLPlus, como SET SUFFIX (altera a extensão de arquivo padrão) e SET LINESIZE n (define o número máximo de caracteres em cada linha exibida antes de quebrar). Para ver todos os valores SET aplicáveis à sua sessão atual, use o comando: (Importante!)
 
     SQL> SHOW ALL
 
@@ -312,7 +312,7 @@ Para visualizar o valor de x, especifique:
     SQL> DEFINE x
     DEFINE X = "the answer is 42" (CHAR)
 
-Você se referiria a essa variável usando um ampersand (&). O SQL*Plus faz uma substituição simples antes de enviar a declaração para o banco de dados Oracle, então você precisará usar aspas simples em torno da variável quando quiser usá-la como uma string literal:
+Você se referiria a essa variável usando um ampersand (&). O SQL*Plus faz uma substituição simples antes de enviar a declaração para o banco de dados Oracle, então você precisará usar aspas simples em torno da variável quando quiser usá-la como uma string literal: (Parei aqui!)
 
     SELECT '&x' FROM DUAL;
 
