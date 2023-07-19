@@ -1,0 +1,25 @@
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Chamando os arquivos abc.pks e abc.pkb');
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Aqui é o arquivo abc.pks');
+END;
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Aqui é o arquivo abc.pkb');
+END;
+DECLARE
+    variavel VARCHAR2(100) := 'Hello, WounderWorld!!';
+    z VARCHAR2(100) := 'Hello darkness my old friend!';
+
+BEGIN
+    SELECT z INTO z FROM DUAL;
+    SELECT variavel INTO variavel FROM DUAL;
+    DBMS_OUTPUT.PUT_LINE(variavel);
+    DBMS_OUTPUT.PUT_LINE(z);
+END;
+DECLARE
+    z VARCHAR2(50);
+BEGIN
+    :z := 'Hello, WounderWorld!';
+END;
+END;partir de agora, todo o que eu fiz de estudos no dia, irei gravar em um log e salvar em uma pasta
+/

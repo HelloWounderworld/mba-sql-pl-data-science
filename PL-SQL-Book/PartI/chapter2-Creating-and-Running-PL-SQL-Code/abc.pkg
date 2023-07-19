@@ -4,9 +4,11 @@ DEFINE maninfold = "Hello Doctor!"
 DEFINE maninfold
 SELECT '&maninfold' FROM DUAL;
 BEGIN
+    DBMS_OUTPUT.PUT_LINE('Arquivo editado pelo comando EDIT que está gravado no log do dia 19/07/2023');
     DBMS_OUTPUT.PUT_LINE('Chamando os arquivos abc.pks e abc.pkb');
     @@scripts-pl-sql/abc.pks;
     @@scripts-pl-sql/abc.pkb;
     @@scripts-pl-sql/variavel.pkg;
+    DBMS_OUTPUT.PUT_LINE('Chamando @abc.pkg; dentro do arquivo abc.pkg causa um loop');
 END;
 /

@@ -303,7 +303,9 @@ Você pode alterar o comportamento do SQLPlus, assim como pode fazer com muitos 
 
     SQL> SHOW ALL
 
-O SQLPlus também pode criar e manipular suas próprias variáveis em memória, e ele reserva algumas variáveis especiais que afetarão seu comportamento. Na verdade, existem dois tipos diferentes de variáveis no SQLPlus: DEFINE e bind variables. Para atribuir um valor a uma variável DEFINE, você pode usar o comando DEFINE:
+O SQLPlus também pode criar e manipular suas próprias variáveis em memória, e ele reserva algumas variáveis especiais que afetarão seu comportamento. Na verdade, existem dois tipos diferentes de variáveis no SQLPlus: DEFINE e bind variables. 
+
+- Para atribuir um valor a uma variável DEFINE, você pode usar o comando DEFINE:
 
     SQL> DEFINE x = "the answer is 42"
 
@@ -312,11 +314,11 @@ Para visualizar o valor de x, especifique:
     SQL> DEFINE x
     DEFINE X = "the answer is 42" (CHAR)
 
-Você se referiria a essa variável usando um ampersand (&). O SQL*Plus faz uma substituição simples antes de enviar a declaração para o banco de dados Oracle, então você precisará usar aspas simples em torno da variável quando quiser usá-la como uma string literal: (Parei aqui!)
+Você se referiria a essa variável usando um ampersand (&). O SQL*Plus faz uma substituição simples antes de enviar a declaração para o banco de dados Oracle, então você precisará usar aspas simples em torno da variável quando quiser usá-la como uma string literal:
 
     SELECT '&x' FROM DUAL;
 
-Para variáveis de associação (bind variables), você primeiro declara a variável. Em seguida, você pode usá-la em PL/SQL e exibi-la usando o comando PRINT do SQL*Plus:
+- Para variáveis de associação (bind variables), você primeiro declara a variável. Em seguida, você pode usá-la em PL/SQL e exibi-la usando o comando PRINT do SQL*Plus:
 
     SQL> VARIABLE x VARCHAR2(10)
     SQL> BEGIN
@@ -331,6 +333,8 @@ Para variáveis de associação (bind variables), você primeiro declara a vari�
     X
     --------------------------------
     hullo
+
+Obs: VARIABLE só pode ser executado diretamente no console. Não tem como usar a mesma em um arquivo de script sem alterar a sua sintaxe.
 
 Isso pode ficar um pouco confuso, porque agora existem duas variáveis "x" diferentes, uma que foi definida e outra que foi declarada:
 
@@ -536,7 +540,7 @@ Assim como blocos anônimos usados mais de uma vez, os programadores geralmente 
 
     Function created.
 
-Como mencionado anteriormente, o SQL*Plus não exibe, por padrão, o conteúdo dos scripts. Você pode usar SET ECHO ON para ver o código-fonte sendo exibido na tela, incluindo os números de linha atribuídos pelo banco de dados; essa configuração pode ser útil ao solucionar problemas. Vamos introduzir um erro no programa comentando uma declaração de variável (linha 4):
+Como mencionado anteriormente, o SQL*Plus não exibe, por padrão, o conteúdo dos scripts. Você pode usar SET ECHO ON para ver o código-fonte sendo exibido na tela, incluindo os números de linha atribuídos pelo banco de dados; essa configuração pode ser útil ao solucionar problemas. Vamos introduzir um erro no programa comentando uma declaração de variável (linha 4): (Parei aqui!)
 
     /* File on web: wordcount.fun */
     SQL> SET ECHO ON

@@ -1,0 +1,5 @@
+SQL> Ao executar o SPOOL log-manual.txt, o comando SPOOL ir  criar o arquivo log-manual.txt, por‚m vc nÆo ver  nada nela ainda.
+SP2-0734: início de comando desconhecido "Ao executa..." - restante da linha ignorado.
+SQL> S¢ ser  exibido todo o hist¢rico do que foi feito depois que vc dar o comando SPOOL OFF, e os textos que eu digitei at‚ agora, desde "Ao executar..." ser  exibido
+SP2-0734: início de comando desconhecido "S¢ ser  ex..." - restante da linha ignorado.
+SQL> SPOOL OFF

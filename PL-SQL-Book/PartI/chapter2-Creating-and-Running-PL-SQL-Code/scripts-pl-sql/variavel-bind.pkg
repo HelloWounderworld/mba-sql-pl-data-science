@@ -1,0 +1,5 @@
+DECLARE
+    z VARCHAR2(50);
+BEGIN
+    :z := 'Hello, WounderWorld!';
+END;

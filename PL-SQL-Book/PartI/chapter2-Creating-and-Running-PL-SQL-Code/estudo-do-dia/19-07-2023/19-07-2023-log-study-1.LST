@@ -1,0 +1,114 @@
+SQL> EDIT
+Gravou file afiedt.buf
+
+  1  BEGIN
+  2      DBMS_OUTPUT.PUT_LINE('Chamando os arquivos abc.pks e abc.pkb');
+  3  BEGIN
+  4      DBMS_OUTPUT.PUT_LINE('Aqui Ã© o arquivo abc.pks');
+  5  END;
+  6  BEGIN
+  7      DBMS_OUTPUT.PUT_LINE('Aqui Ã© o arquivo abc.pkb');
+  8  END;
+  9  DECLARE
+ 10      variavel VARCHAR2(100) := 'Hello, WounderWorld!!';
+ 11      z VARCHAR2(100) := 'Hello darkness my old friend!';
+ 12  BEGIN
+ 13      SELECT z INTO z FROM DUAL;
+ 14      SELECT variavel INTO variavel FROM DUAL;
+ 15      DBMS_OUTPUT.PUT_LINE(variavel);
+ 16      DBMS_OUTPUT.PUT_LINE(z);
+ 17  END;
+ 18  DECLARE
+ 19      z VARCHAR2(50);
+ 20  BEGIN
+ 21      :z := 'Hello, WounderWorld!';
+ 22  END;
+ 23* END;partir de agora, todo o que eu fiz de estudos no dia, irei gravar em um log e salvar em uma pasta
+ 24  /
+END;partir de agora, todo o que eu fiz de estudos no dia, irei gravar em um log e salvar em uma pasta
+        *
+ERRO na linha 23:
+ORA-06550: linha 23, coluna 5: 
+PLS-00103: Encontrado o símbolo "PARTIR"  
+
+
+SQL> SET EDIFILE
+SP2-0158: opção SET desconhecida "EDIFILE"
+SQL> EDIT abc.pkg
+
+SQL> L]
+SP2-0224: número de linha inicial inválido
+SQL> L
+  1  BEGIN
+  2      DBMS_OUTPUT.PUT_LINE('Chamando os arquivos abc.pks e abc.pkb');
+  3  BEGIN
+  4      DBMS_OUTPUT.PUT_LINE('Aqui Ã© o arquivo abc.pks');
+  5  END;
+  6  BEGIN
+  7      DBMS_OUTPUT.PUT_LINE('Aqui Ã© o arquivo abc.pkb');
+  8  END;
+  9  DECLARE
+ 10      variavel VARCHAR2(100) := 'Hello, WounderWorld!!';
+ 11      z VARCHAR2(100) := 'Hello darkness my old friend!';
+ 12  BEGIN
+ 13      SELECT z INTO z FROM DUAL;
+ 14      SELECT variavel INTO variavel FROM DUAL;
+ 15      DBMS_OUTPUT.PUT_LINE(variavel);
+ 16      DBMS_OUTPUT.PUT_LINE(z);
+ 17  END;
+ 18  DECLARE
+ 19      z VARCHAR2(50);
+ 20  BEGIN
+ 21      :z := 'Hello, WounderWorld!';
+ 22  END;
+ 23* END;partir de agora, todo o que eu fiz de estudos no dia, irei gravar em um log e salvar em uma pasta
+SQL> L - lista as declaracoes mais recentes
+SP2-0224: número de linha inicial inválido
+SQL> n
+SP2-0042: comando desconhecido "n" - restante da linha ignorado.
+SQL> 2
+  2*     DBMS_OUTPUT.PUT_LINE('Chamando os arquivos abc.pks e abc.pkb');
+SQL> 3
+  3* BEGIN
+SQL> 4
+  4*     DBMS_OUTPUT.PUT_LINE('Aqui Ã© o arquivo abc.pks');
+SQL> 10
+ 10*     variavel VARCHAR2(100) := 'Hello, WounderWorld!!';
+SQL> 2 DBMS_OUTPUT.PUT_LINE('Coloquei uma nova frase na linha 2');
+SQL> EDIT abc.pkg
+
+SQL> I inserindo uma linha
+SQL> EDIT abc.pkg
+
+SQL> 0 inserindo linha antes da primeira linha
+SQL> L
+  1  inserindo linha antes da primeira linha
+  2  BEGIN
+  3  DBMS_OUTPUT.PUT_LINE('Coloquei uma nova frase na linha 2')
+  4  inserindo uma linha
+  5  BEGIN
+  6      DBMS_OUTPUT.PUT_LINE('Aqui Ã© o arquivo abc.pks');
+  7  END;
+  8  BEGIN
+  9      DBMS_OUTPUT.PUT_LINE('Aqui Ã© o arquivo abc.pkb');
+ 10  END;
+ 11  DECLARE
+ 12      variavel VARCHAR2(100) := 'Hello, WounderWorld!!';
+ 13      z VARCHAR2(100) := 'Hello darkness my old friend!';
+ 14  BEGIN
+ 15      SELECT z INTO z FROM DUAL;
+ 16      SELECT variavel INTO variavel FROM DUAL;
+ 17      DBMS_OUTPUT.PUT_LINE(variavel);
+ 18      DBMS_OUTPUT.PUT_LINE(z);
+ 19  END;
+ 20  DECLARE
+ 21      z VARCHAR2(50);
+ 22  BEGIN
+ 23      :z := 'Hello, WounderWorld!';
+ 24  END;
+ 25* END;partir de agora, todo o que eu fiz de estudos no dia, irei gravar em um log e salvar em uma pasta
+SQL> Vamos testar criando um login.sql
+SP2-0734: início de comando desconhecido "Vamos test..." - restante da linha ignorado.
+SQL> Vou sair pelo exit aqui
+SP2-0734: início de comando desconhecido "Vou sair p..." - restante da linha ignorado.
+SQL> exit

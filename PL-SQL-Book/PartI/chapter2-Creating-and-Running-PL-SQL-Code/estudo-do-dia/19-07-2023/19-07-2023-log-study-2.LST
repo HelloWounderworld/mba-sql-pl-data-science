@@ -1,0 +1,5 @@
+SQL> O outro eu tinha dado o exit
+SP2-0734: início de comando desconhecido "O outro eu..." - restante da linha ignorado.
+SQL> saind de novo
+SP2-0734: início de comando desconhecido "saind de n..." - restante da linha ignorado.
+SQL> exit

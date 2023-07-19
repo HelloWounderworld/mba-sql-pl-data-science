@@ -1,0 +1,52 @@
+SQL> Teste
+SP2-0042: comando desconhecido "Teste" - restante da linha ignorado.
+SQL> @run_uso-spool
+SP2-0310: não foi possível abrir o arquivo "run_uso-spool.sql"
+SQL> @uso-spool
+SP2-0310: não foi possível abrir o arquivo "uso-spool.sql"
+SQL> DEFINE Z
+SP2-0135: símbolo z UNDEFINED
+SQL> Como posso salvar nessa merda de arquivo?
+SP2-0734: início de comando desconhecido "Como posso..." - restante da linha ignorado.
+SQL> @run_uso-spool.lst
+SP2-0310: não foi possível abrir o arquivo "run_uso-spool.lst"
+SQL> @run_uso-spool.lst
+SP2-0310: não foi possível abrir o arquivo "run_uso-spool.lst"
+SQL> @run_uso-spool
+SP2-0310: não foi possível abrir o arquivo "run_uso-spool.sql"
+SQL> @abc.pkg
+DEFINE MANINFOLD       = "Hello Doctor!" (CHAR)
+antigo   1: SELECT '&maninfold' FROM DUAL
+novo   1: SELECT 'Hello Doctor!' FROM DUAL
+
+'HELLODOCTOR!                                                                   
+-------------                                                                   
+Hello Doctor!                                                                   
+
+VARIABLE z VARCHAR2(50)
+             *
+ERRO na linha 19:
+ORA-06550: linha 19, coluna 10: 
+PLS-00103: Encontrado o símbolo "Z" quando um dos seguintes símbolos era 
+esperado: 
+:= . ( @ % ; 
+
+
+SQL> @abc.pkg
+DEFINE MANINFOLD       = "Hello Doctor!" (CHAR)
+antigo   1: SELECT '&maninfold' FROM DUAL
+novo   1: SELECT 'Hello Doctor!' FROM DUAL
+
+'HELLODOCTOR!                                                                   
+-------------                                                                   
+Hello Doctor!                                                                   
+
+Chamando os arquivos abc.pks e abc.pkb                                          
+Aqui Ã© o arquivo abc.pks                                                       
+Aqui Ã© o arquivo abc.pkb                                                       
+Hello, WounderWorld!!                                                           
+Hello darkness my old friend!                                                   
+
+Procedimento PL/SQL concluído com sucesso.
+
+SQL> SPOOL OFF
