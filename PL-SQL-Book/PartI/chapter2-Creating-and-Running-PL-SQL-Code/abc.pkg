@@ -1,4 +1,6 @@
 REM Filename: abc.pkg
+WHENEVER SQLERROR EXIT SQL.SQLCODE
+SET ECHO ON
 SET SERVEROUTPUT ON
 DEFINE maninfold = "Hello Doctor!"
 DEFINE maninfold

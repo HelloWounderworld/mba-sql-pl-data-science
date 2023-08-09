@@ -540,7 +540,7 @@ Assim como blocos anônimos usados mais de uma vez, os programadores geralmente 
 
     Function created.
 
-Como mencionado anteriormente, o SQL*Plus não exibe, por padrão, o conteúdo dos scripts. Você pode usar SET ECHO ON para ver o código-fonte sendo exibido na tela, incluindo os números de linha atribuídos pelo banco de dados; essa configuração pode ser útil ao solucionar problemas. Vamos introduzir um erro no programa comentando uma declaração de variável (linha 4): (Parei aqui!)
+Como mencionado anteriormente, o SQL*Plus não exibe, por padrão, o conteúdo dos scripts. Você pode usar SET ECHO ON para ver o código-fonte sendo exibido na tela, incluindo os números de linha atribuídos pelo banco de dados; essa configuração pode ser útil ao solucionar problemas. Vamos introduzir um erro no programa comentando uma declaração de variável (linha 4):
 
     /* File on web: wordcount.fun */
     SQL> SET ECHO ON
